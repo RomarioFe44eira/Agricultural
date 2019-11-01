@@ -12,7 +12,7 @@
     </mat-card-actions>
 
     <mat-card-footer class="button-row">
-        <button mat-button [routerLink]="['/register']">Create Account</button>
+        <button mat-button [routerLink]="['/auth/register']">Create Account</button>
         <button mat-button (click)="ProblemAccess = !ProblemAccess" >{{ ProblemAccess ? 'Log in' : 'Problem to Access?'}} </button>
     </mat-card-footer>
 </mat-card>
@@ -26,7 +26,7 @@
     </mat-card-actions>
 
     <mat-card-footer class="button-row">
-        <button mat-button [routerLink]="['/register']">preciso de ajuda</button>
+        <button mat-button [routerLink]="['/auth/register']">preciso de ajuda</button>
         <button mat-button (click)="desconectar()">Desconectar</button>
     </mat-card-footer>
 </mat-card>

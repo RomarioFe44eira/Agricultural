@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DefaultModule } from './default/default.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     Material,
     AuthModule,
     DashboardModule,
-    HttpClientModule
+    HttpClientModule,
+    DefaultModule
   ],
   providers: [],
   bootstrap: [AppComponent],
