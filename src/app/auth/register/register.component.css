@@ -1,0 +1,12 @@
+mat-card{
+    width: 60%;
+    min-width: 50%;
+    max-width: 100%;
+    margin: 8% auto;
+}
+
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+  text-align: center;
+}

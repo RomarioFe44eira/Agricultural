@@ -1,0 +1,38 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer #drawer mode="side" opened>
+        <mat-list role="list">
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">
+                <mat-icon>settings</mat-icon>Configurações
+            </mat-list-item>
+            <mat-list-item role="listitem" (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>Desconectar
+            </mat-list-item>
+        </mat-list>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <span (click)="drawer.toggle()">Agricultural</span>
+                <span class="example-spacer"></span>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Botão para acessar o dashboard">
+                    <mat-icon>dashboard</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item [routerLink]="['/login']" routerLinkActive="router-link-active">
+                        <mat-icon>account_circle</mat-icon>
+                        <span>Account</span>
+                    </button>
+                    <button mat-menu-item (click)="logout()">
+                        <mat-icon>exit_to_app</mat-icon>
+                        <span>Disconect</span>
+                    </button>
+                </mat-menu>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <button type="button" mat-button (click)="drawer.toggle()">Toggle sidenav</button>
+    </mat-drawer-content>
+</mat-drawer-container>
+

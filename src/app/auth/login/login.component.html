@@ -1,0 +1,33 @@
+<mat-card *ngIf="!state">
+    <mat-card-title>{{ !ProblemAccess ? 'Authenticate' : 'Recover Access'}}</mat-card-title>
+    <mat-card-subtitle>{{ !ProblemAccess ? 'Enter your access credentials' : 'Enter your email address associated with your account'}}</mat-card-subtitle>
+
+    <mat-card-content>
+        <app-input-email (outEmail)="setEmail($event)"></app-input-email>
+        <app-input-password *ngIf="!ProblemAccess" (outPassword)="setPassword($event)"></app-input-password>
+    </mat-card-content>
+
+    <mat-card-actions class="buttonsCenter" >
+        <button mat-flat-button color="primary" class="buttonLarge" (click)="executeForm(ProblemAccess)" >{{ ProblemAccess ? 'Recover Access' : 'Log in'}}</button>
+    </mat-card-actions>
+
+    <mat-card-footer class="button-row">
+        <button mat-button [routerLink]="['/register']">Create Account</button>
+        <button mat-button (click)="ProblemAccess = !ProblemAccess" >{{ ProblemAccess ? 'Log in' : 'Problem to Access?'}} </button>
+    </mat-card-footer>
+</mat-card>
+
+<mat-card *ngIf="state">
+    <mat-card-title>Authenticate</mat-card-title>
+    <mat-card-subtitle>A autenticação já foi realizada por você e sua sessão ainda está válida.</mat-card-subtitle>
+
+    <mat-card-actions class="buttonsCenter" >
+        <button mat-flat-button color="primary" class="buttonLarge"  [routerLink]="['/dashboard']">Painel Administrativo</button>
+    </mat-card-actions>
+
+    <mat-card-footer class="button-row">
+        <button mat-button [routerLink]="['/register']">preciso de ajuda</button>
+        <button mat-button (click)="desconectar()">Desconectar</button>
+    </mat-card-footer>
+</mat-card>
+

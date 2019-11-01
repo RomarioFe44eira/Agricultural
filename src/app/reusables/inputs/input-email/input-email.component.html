@@ -1,0 +1,8 @@
+<p>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Digite seu email" [formControl]="email" (change)="mailChange()" required>
+        <mat-icon matSuffix matTooltip="exemplo@mail.com">mail</mat-icon>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+</p>

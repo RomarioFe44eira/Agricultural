@@ -1,0 +1,24 @@
+mat-card{
+    width: 30%;
+    margin: 6% auto;
+}
+
+mat-form-field{
+    width: 100%;
+    min-width: 60%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.buttonsCenter{
+    text-align: center;
+}
+
+.buttonLarge{
+    width: 50%;
+}
+
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
