@@ -1,19 +1,27 @@
 <mat-drawer-container class="container">
-    <mat-drawer #drawer mode="side" opened (mouseleave)="drawer.toggle()">
-        <mat-list role="list">
-            <mat-list-item role="listitem">
-                <mat-icon>close</mat-icon>Chart
-            </mat-list-item>
-            <mat-list-item role="listitem">
-                    <mat-icon>close</mat-icon>Chart
-            </mat-list-item>
-            <mat-list-item role="listitem">
-                <mat-icon>settings</mat-icon>Configurações
-            </mat-list-item>
-            <mat-list-item role="listitem" (click)="logout()">
-                <mat-icon>exit_to_app</mat-icon>Desconectar
-            </mat-list-item>
-        </mat-list>
+    <mat-drawer #drawer mode="side" opened (mouseleave)="drawer.toggle()" (blur)="drawer.toggle()">
+
+        <mat-card>
+            <mat-card-title>Dashboard</mat-card-title>
+
+            <mat-card-content>
+                    <mat-list role="list">
+                            <mat-list-item role="listitem">
+                                <mat-icon>close</mat-icon>Chart
+                            </mat-list-item>
+                            <mat-list-item role="listitem">
+                                    <mat-icon>close</mat-icon>Chart
+                            </mat-list-item>
+                            <mat-list-item role="listitem">
+                                <mat-icon>settings</mat-icon>Configurações
+                            </mat-list-item>
+                            <mat-list-item role="listitem" (click)="logout()">
+                                <mat-icon>exit_to_app</mat-icon>Desconectar
+                            </mat-list-item>
+                        </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <button type="button" mat-button (click)="drawer.toggle()"><mat-icon>exit_to_app</mat-icon> Desconectar</button>
     </mat-drawer>
 
     <mat-drawer-content>

@@ -19,3 +19,7 @@ mat-list-item:hover{
     background-color: gray;
     border: 1px dashed black;
 }
+
+mat-drawer{
+    width: 15%;
+}
