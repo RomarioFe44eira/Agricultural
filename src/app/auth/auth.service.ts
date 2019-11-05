@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { getDefaultURL } from '../app.const';
 import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../reusables/snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private snackbar: SnackbarService
   ) { 
     this.currentTokenSubject = new BehaviorSubject<string>(sessionStorage.getItem('token')),
     this.currentToken = this.currentTokenSubject.asObservable()
@@ -41,6 +43,16 @@ export class AuthService {
     );
   }
 
+  public recoveryAccount = (email: string): Observable<string> => {
+    return this.http.post<string>(
+      getDefaultURL('auth/password/recovery/' + email),{
+        headers: this.getHeaders()
+      },
+    )
+  }
+
+
+
   public get currentTokenValue(): string {
     return this.currentTokenSubject.value;
   }
@@ -54,7 +66,8 @@ export class AuthService {
   }
  
   public logout() {
-    console.log('acessou lougout');
+    /* console.log('acessou lougout'); */
+    this.snackbar.openSnackBar("Account disconnected","OK");
     
     sessionStorage.removeItem('token');
     this.currentTokenValue = null;

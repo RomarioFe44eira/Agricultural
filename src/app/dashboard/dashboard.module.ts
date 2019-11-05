@@ -6,16 +6,17 @@ import { ReusablesModule } from '../reusables/reusables.module';
 import { Material } from '../material';
 import { DefaultComponent } from './default/default.component';
 import { AccountComponent } from './account/account.component';
+import { ToolbarDashboardComponent } from './toolbar-dashboard/toolbar-dashboard.component';
 
 
 @NgModule({
-  declarations: [DefaultComponent, AccountComponent],
+  declarations: [DefaultComponent, AccountComponent, ToolbarDashboardComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     ReusablesModule,
     Material
   ],
-  exports: [DefaultComponent, AccountComponent]
+  exports: [DefaultComponent, AccountComponent, ToolbarDashboardComponent]
 })
 export class DashboardModule { }

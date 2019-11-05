@@ -1,27 +1,23 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row class="mini-toobar"> <span>Custom Toolbar</span> </mat-toolbar-row>
-  
-    <mat-toolbar-row>
-      <span>{{titleToolbar}}</span>
-      <span class="spacer"></span>
-
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>dashboard</mat-icon>
+  <mat-toolbar-row>
+    <span>{{titleToolbar}}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>dashboard</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['auth/login']">
+        <mat-icon>account_circle</mat-icon>
+        <span>Autenticar</span>
       </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="['auth/register']"  >
-          <mat-icon>person_add</mat-icon>
-          <span>Regitrar</span>
-        </button>
-        <button mat-menu-item [routerLink]="['auth/login']"  >
-          <mat-icon>account_circle</mat-icon>
-          <span>Autenticar</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>live_help</mat-icon>
-          <span>Faq</span>
-        </button>
-      </mat-menu>
-
-    </mat-toolbar-row>
-  </mat-toolbar>
+      <button mat-menu-item [routerLink]="['auth/register']">
+        <mat-icon>person_add</mat-icon>
+        <span>Regitrar</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>live_help</mat-icon>
+        <span>Faq</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

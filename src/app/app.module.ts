@@ -10,7 +10,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DefaultModule } from './default/default.module';
-
+import { PersonModule } from './person/person.module';
+import { IotModule } from './dashboard/iot/iot.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { DefaultModule } from './default/default.module';
     AuthModule,
     DashboardModule,
     HttpClientModule,
-    DefaultModule
+    DefaultModule,
+    PersonModule,
+    IotModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,11 @@
+mat-card{
+    width: 50%;
+    margin: 10% auto;
+}
+
+mat-card-content{
+    width: 20%;
+    margin: 0 auto;
+}
+
+img{width: 50%;}
