@@ -1,0 +1,18 @@
+
+mat-icon {padding: 0 14px;}
+
+mat-list-item:hover{
+    background: linear-gradient(
+        to left,
+        #f00261,
+        #c2185b
+    );
+}
+
+.logout:hover{
+    background: linear-gradient(
+        to left,
+        #c2185b,
+        #a00338
+    );
+}

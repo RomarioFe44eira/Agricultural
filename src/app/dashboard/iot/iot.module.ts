@@ -7,13 +7,17 @@ import { DeviceComponent } from './device/device.component';
 import { MeasurementComponent } from './measurement/measurement.component';
 import { SensorComponent } from './sensor/sensor.component';
 import { IotDefaultComponent } from './iot-default/iot-default.component';
+import { DashboardModule } from '../dashboard.module';
+import { Material } from 'src/app/material';
 
 
 @NgModule({
   declarations: [DatatypeComponent, DeviceComponent, MeasurementComponent, SensorComponent, IotDefaultComponent],
   imports: [
     CommonModule,
-    IotRoutingModule
+    IotRoutingModule,
+    DashboardModule,
+    Material
   ],
   exports: [DatatypeComponent, DeviceComponent, MeasurementComponent, SensorComponent, IotDefaultComponent]
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Route, Router } from '@angular/router';
 import { SnackbarService } from '../../reusables/snackbar.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-login',
@@ -48,17 +49,25 @@ export class LoginComponent implements OnInit {
     if (pAccess) { //Recuperar Senha
       console.log('Recover Password?: ' + pAccess);
 
-      this.auth.recoveryAccount(this.email).subscribe(
-        data => {
-          console.log(data);
-          this.snackbar.openSnackBar(data['message'], "OK");
-          this.router.navigate(['auth']);
-        },
-        error => {
-          console.log(error);
-          this.snackbar.openSnackBar(error.error['message'], "OK");
-        }
-      );
+      if (!isNullOrUndefined(this.email)) {
+        this.auth.recoveryAccount(this.email).subscribe(
+          data => {
+            console.log(data);
+            this.snackbar.openSnackBar(data['message'], "OK");
+            this.router.navigate(['auth']);
+          },
+          error => {
+            console.log(error);
+            this.snackbar.openSnackBar(error.error['message'], "OK");
+          }
+        );
+      }
+      else{
+        this.snackbar.openSnackBar('Forneça um email válido', "OK");
+      }
+
+
+      
     }
     else { // Realizar autenticação
       console.log('Autenticação Ativado?: ' + !pAccess);

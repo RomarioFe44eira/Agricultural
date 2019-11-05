@@ -4,66 +4,11 @@
     border: 1px solid #555;
 }
 
-.icon, mat-icon {padding: 0 14px;}
+.icon{padding: 0 14px;}
 .spacer {flex: 1 1 auto;}
 
-.router-link-active{
-    background-color: gray;
-    border: 1px dashed black;
+h1, h2, h3, h4, h5, h6{
+    text-align: center;
+    padding: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
-mat-grid-tile {
-    background: lightblue;
-}
-
-mat-grid-list{
-    width: 50%;
-    margin: 10px auto;
-}
-
-mat-list-item:hover{
-    background: linear-gradient(
-        to left,
-        #f00261,
-        #c2185b
-    );
-}
-
-.logout:hover{
-    background: linear-gradient(
-        to left,
-        #c2185b,
-        #a00338
-    );
-}
-
-.example-container {
-    position: absolute;
-    top: 60px;
-    bottom: 60px;
-    left: 0;
-    right: 0;
-  }
-  
-  .example-sidenav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    background: rgba(255, 0, 0, 0.5);
-  }
-  
-  .example-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .example-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  

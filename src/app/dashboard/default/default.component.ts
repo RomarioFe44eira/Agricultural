@@ -7,7 +7,8 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./default.component.css']
 })
 export class DefaultComponent implements OnInit {
-
+  
+  
   constructor(
     private auth: AuthService
   ) { }

@@ -7,16 +7,17 @@ import { Material } from '../material';
 import { DefaultComponent } from './default/default.component';
 import { AccountComponent } from './account/account.component';
 import { ToolbarDashboardComponent } from './toolbar-dashboard/toolbar-dashboard.component';
+import { MatDrawerComponent } from './mat-drawer/mat-drawer.component';
 
 
 @NgModule({
-  declarations: [DefaultComponent, AccountComponent, ToolbarDashboardComponent],
+  declarations: [DefaultComponent, AccountComponent, ToolbarDashboardComponent, MatDrawerComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     ReusablesModule,
     Material
   ],
-  exports: [DefaultComponent, AccountComponent, ToolbarDashboardComponent]
+  exports: [DefaultComponent, AccountComponent, ToolbarDashboardComponent, MatDrawerComponent]
 })
 export class DashboardModule { }
