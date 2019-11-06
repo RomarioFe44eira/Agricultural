@@ -14,10 +14,10 @@
                         <mat-icon>add</mat-icon>
                     </button>
                 </mat-card-title>
-                <mat-card-subtitle>Representa o tipo de dado que é coletado por sensores de IoT. Exemplos: temperatura, umidade, velocidade do vento, etc.</mat-card-subtitle>
+                <mat-card-subtitle>Representação do tipo de dado que serão coletados por sensores IoT. Exemplos: temperatura, umidade, velocidade do vento, etc.</mat-card-subtitle>
                 <mat-card-content>
-                    <mat-form-field>
-                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                    <mat-form-field class="addIcon">
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar resultados">
                     </mat-form-field>
                     
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -47,7 +47,7 @@
                                 <div class="example-button-row">
                                     <button mat-button class="addIcon" matTooltip="Delete data type"><mat-icon>delete</mat-icon></button>
                                     <button mat-button class="addIcon" matTooltip="Edit data type"><mat-icon>edit</mat-icon></button>
-                                    <button mat-button class="addIcon" matTooltip="View data type"><mat-icon>view_list</mat-icon></button>
+                                    <button mat-button class="addIcon" matTooltip="Details data type"><mat-icon>view_list</mat-icon></button>
                                 </div>
                             </td>
                         </ng-container>

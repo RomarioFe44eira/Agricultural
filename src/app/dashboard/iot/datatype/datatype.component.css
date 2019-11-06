@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 
-mat-form-field, mat-card {
+mat-card {
     width: 80%;
     margin: 1% auto;
 }
@@ -30,7 +30,7 @@ table{
   
 .mat-form-field {
     font-size: 14px;
-    width: 80%;
+    width: 15%;
 }
 
 .example-button-row button,

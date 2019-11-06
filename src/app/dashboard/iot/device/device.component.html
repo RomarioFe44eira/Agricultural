@@ -14,11 +14,11 @@
                         <mat-icon>add</mat-icon>
                     </button>
                 </mat-card-title>
-                <mat-card-subtitle>Um dispositivo de IoT é um equipamento que contém um ou mais sensores para coletar dados no ambiente agrícola.</mat-card-subtitle>
+                <mat-card-subtitle>Dispositivos de IoT são equipamento que contém um ou mais sensores para coletar dados em ambientes agrícolas.</mat-card-subtitle>
                 <mat-card-content>
-                    <mat-form-field>
-                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-                    </mat-form-field>
+                        <mat-form-field class="addIcon">
+                            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar resultados">
+                        </mat-form-field>
                     
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                     
@@ -47,7 +47,7 @@
                                 <div class="example-button-row">
                                     <button mat-button class="addIcon" matTooltip="Delete device"><mat-icon>delete</mat-icon></button>
                                     <button mat-button class="addIcon" matTooltip="Edit device"><mat-icon>edit</mat-icon></button>
-                                    <button mat-button class="addIcon" matTooltip="View device"><mat-icon>view_list</mat-icon></button>
+                                    <button mat-button class="addIcon" matTooltip="Details device"><mat-icon>view_list</mat-icon></button>
                                 </div>
                             </td>
                         </ng-container>
