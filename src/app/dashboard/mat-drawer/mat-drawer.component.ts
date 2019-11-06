@@ -7,7 +7,7 @@ export interface drawerItens {
 }
 
 const DRAWERMENU: drawerItens[] = [
-  {name: 'Default', icon: 'data_usage', routerLink: '/dashboard/iot'},
+  {name: 'IoT', icon: 'widgets', routerLink: '/dashboard/iot'},
   {name: 'Data Type', icon: 'data_usage', routerLink: '/dashboard/iot/datatype'},
   {name: 'Device', icon: 'devices', routerLink: '/dashboard/iot/device'},
   {name: 'Measurement', icon: 'timeline', routerLink: '/dashboard/iot/measurement'},

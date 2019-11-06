@@ -4,18 +4,14 @@
     
         <mat-drawer-content>
             <app-toolbar-dashboard></app-toolbar-dashboard>
-            <h1>IOT Default</h1>
-            <h4>Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Ut sollicitudin orci nibh, et gravida orci consequat at.
-                Praesent eget metus congue, feugiat dolor a, vestibulum ipsum. Quisque ultrices commodo 
-                sollicitudin. Duis hendrerit hendrerit elit non consectetur. Sed posuere ullamcorper lorem,
-                non condimentum tortor convallis eu. Donec non massa pretium, dictum purus vitae, ultricies
-                ipsum. Morbi vestibulum id neque eget rhoncus. Ut elementum ac ligula at condimentum. Lorem 
-                ipsum dolor sit amet, consectetur adipiscing elit. In dapibus lectus quis lorem dignissim pellentesque.
-                Cras auctor urna urna, eu eleifend arcu rutrum ut. Donec finibus luctus ligula vel dictum. Nunc efficitur
-                tincidunt tortor, vel venenatis lectus. Curabitur finibus vestibulum mollis. Aliquam consectetur 
-                sapien id iaculis fermentum. Mauris quis auctor ipsum.
-            </h4>
+            <h1>Internet of Things</h1>
+           
+            <mat-grid-list cols="2" rowHeight="2:1" gutterSize="10px">
+                <mat-grid-tile [routerLink]="['/dashboard/iot/datatype']">Data Type</mat-grid-tile>
+                <mat-grid-tile [routerLink]="['/dashboard/iot/device']">Device</mat-grid-tile>
+                <mat-grid-tile [routerLink]="['/dashboard/iot/measurement']">Meansurement</mat-grid-tile>
+                <mat-grid-tile [routerLink]="['/dashboard/iot/sensor']">Sensor</mat-grid-tile>
+            </mat-grid-list>
         </mat-drawer-content>
     
     </mat-drawer-container>

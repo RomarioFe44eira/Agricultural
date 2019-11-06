@@ -71,18 +71,24 @@ export class LoginComponent implements OnInit {
     }
     else { // Realizar autenticação
       console.log('Autenticação Ativado?: ' + !pAccess);
-      this.auth.login(this.email, this.password).subscribe(
-        data => {
-          console.log(data)
-          this.auth.currentTokenValue = data;
-          sessionStorage.setItem('token', data);
-          this.router.navigate(['/dashboard']);
-        },
-        error => {
-          let e = JSON.parse(error.error)
-          this.snackbar.openSnackBar(e.message, error.statusText);
-        }
-      )
+
+
+      if (isNullOrUndefined(this.email) || isNullOrUndefined(this.password)) {
+        this.snackbar.openSnackBar("Email ou senha inválidos", 'ok');
+      }else{
+        this.auth.login(this.email, this.password).subscribe(
+          data => {
+            console.log(data)
+            this.auth.currentTokenValue = data;
+            sessionStorage.setItem('token', data);
+            this.router.navigate(['/dashboard']);
+          },
+          error => {
+            let e = JSON.parse(error.error)
+            this.snackbar.openSnackBar(e.message, error.statusText);
+          }
+        )
+      }
     }
   }
 

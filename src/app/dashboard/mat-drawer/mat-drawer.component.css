@@ -7,12 +7,16 @@ mat-list-item:hover{
         #f00261,
         #c2185b
     );
+    border-radius: 8px;
 }
 
-.logout:hover{
+.router-link-active{
     background: linear-gradient(
         to left,
-        #c2185b,
-        #a00338
+        #24010f,
+        #5a1631,
+        #634652,
+        gray
     );
+    border-radius: 12px;
 }
