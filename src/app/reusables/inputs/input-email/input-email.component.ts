@@ -15,13 +15,12 @@ export class InputEmailComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit() {}
-  
-  mailChange(){
+
+  mailChange() {
     if (this.email.status == 'VALID') {
-      this.outEmail.emit(this.email)
-    }
-    else{
-      this.openSnackBar("Your email has errors", "Ok")
+      this.outEmail.emit(this.email);
+    } else {
+      this.openSnackBar('Your email has errors', 'Ok');
     }
   }
 
@@ -29,7 +28,7 @@ export class InputEmailComponent implements OnInit {
     return this.email.hasError('required') ? 'You must enter a value' : this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  openSnackBar(message: string, action: string) { 
+  openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 3500,
       horizontalPosition: 'center',

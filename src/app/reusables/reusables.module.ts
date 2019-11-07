@@ -11,7 +11,7 @@ import { Material } from '../material';
   declarations: [InputEmailComponent, InputPasswordComponent],
   imports: [
     CommonModule,
-    FormsModule, 
+    FormsModule,
     Material
   ],
   exports: [InputPasswordComponent, InputEmailComponent]

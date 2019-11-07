@@ -30,7 +30,7 @@ export class MeasurementComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
- 
+
   constructor() { }
 
   ngOnInit() {

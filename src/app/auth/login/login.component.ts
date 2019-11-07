@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   private email: string;
   private password: string;
 
-  public problemAcess: boolean = false;
+  public problemAcess = false;
   public emailIsValid;
   public passIsValid;
 
@@ -26,73 +26,71 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("ISLOGGED: " + this.auth.isLogged());
+    console.log('ISLOGGED: ' + this.auth.isLogged());
     this.state = this.auth.isLogged();
   }
 
-  setEmail(mail){
+  setEmail(mail) {
     console.log(mail);
     console.log(mail.value);
     (mail.status == 'VALID') ? this.email = mail.value  : this.email = undefined;
     this.emailIsValid = (mail.status == 'VALID') ? true : false;
   }
 
-  setPassword(password){
+  setPassword(password) {
     console.log(password);
     console.log(password.value);
     this.passIsValid = (password.status == 'VALID') ? true : false;
     (password.status == 'VALID') ? this.password = password.value : this.password = undefined;
   }
 
-  executeForm(pAccess?){
+  executeForm(pAccess?) {
     (pAccess == undefined) ? pAccess = false : pAccess = pAccess;
-    if (pAccess) { //Recuperar Senha
+    if (pAccess) { // Recuperar Senha
       console.log('Recover Password?: ' + pAccess);
 
       if (!isNullOrUndefined(this.email)) {
         this.auth.recoveryAccount(this.email).subscribe(
           data => {
             console.log(data);
-            this.snackbar.openSnackBar(data['message'], "OK");
+            /* this.snackbar.openSnackBar(data.message, 'OK'); */
             this.router.navigate(['auth']);
           },
           error => {
             console.log(error);
-            this.snackbar.openSnackBar(error.error['message'], "OK");
+            this.snackbar.openSnackBar(error.error.message, 'OK');
           }
         );
-      }
-      else{
-        this.snackbar.openSnackBar('Forneça um email válido', "OK");
+      } else {
+        this.snackbar.openSnackBar('Forneça um email válido', 'OK');
       }
 
 
-      
-    }
-    else { // Realizar autenticação
+
+    } else { // Realizar autenticação
       console.log('Autenticação Ativado?: ' + !pAccess);
 
 
       if (isNullOrUndefined(this.email) || isNullOrUndefined(this.password)) {
-        this.snackbar.openSnackBar("Email ou senha inválidos", 'ok');
-      }else{
+        this.snackbar.openSnackBar('Email ou senha inválidos', 'ok');
+      } else {
         this.auth.login(this.email, this.password).subscribe(
           data => {
-            console.log(data)
+            console.log(data);
             this.auth.currentTokenValue = data;
             sessionStorage.setItem('token', data);
             this.router.navigate(['/dashboard']);
           },
           error => {
-            let e = JSON.parse(error.error)
+            const e = JSON.parse(error.error);
             this.snackbar.openSnackBar(e.message, error.statusText);
           }
-        )
+        );
       }
     }
   }
 
-  desconectar(){
+  desconectar() {
     this.auth.logout();
   }
 

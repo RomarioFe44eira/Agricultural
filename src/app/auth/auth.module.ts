@@ -12,7 +12,7 @@ import { ReusablesModule } from '../reusables/reusables.module';
   declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
-    AuthRoutingModule, 
+    AuthRoutingModule,
     ReusablesModule,
     Material,
   ],

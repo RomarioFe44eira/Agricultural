@@ -9,7 +9,6 @@ const routes: Routes = [
   {path: '', component: DefaultComponent, canActivate: [AuthGuard]},
   {path: 'account', component: AccountComponent, canActivate: [AuthGuard]},
   {path: 'iot', loadChildren: './iot/iot.module#IotModule', canActivate: [AuthGuard]}
-
 ];
 
 @NgModule({

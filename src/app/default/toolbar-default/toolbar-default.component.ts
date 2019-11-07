@@ -15,7 +15,7 @@ export class ToolbarDefaultComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
 }
