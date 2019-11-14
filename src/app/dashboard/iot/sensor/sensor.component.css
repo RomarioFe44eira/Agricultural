@@ -20,20 +20,17 @@ mat-card {
 }
 
 
-.addIcon{
-    float: right;
-}
-
-table{
-    width: 100%;
-}
-  
-.mat-form-field {
-    font-size: 14px;
-    width: 15%;
-}
+.addIcon{float: right;}
+table{width: 100%;}
+.mat-form-field {font-size: 14px;width: 15%;}
 
 .example-button-row button,
 .example-button-row a {
   margin-right: 8px;
+}
+
+
+.full-width {
+    width: 50%;
+    margin: 0 auto;
 }

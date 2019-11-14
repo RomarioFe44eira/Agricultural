@@ -6,6 +6,37 @@
             <app-toolbar-dashboard></app-toolbar-dashboard>
 
             <mat-card>
+                    <mat-card-title>[Create] OR [Edit] new Sensor</mat-card-title>
+                    <mat-card-subtitle>Um sensor está associado a um dispositivo IoT..</mat-card-subtitle>
+    
+                    <mat-card-content>
+
+                        <p>
+                            <mat-form-field  class="full-width">
+                                <mat-label>Select your Device</mat-label>
+                                <mat-select>
+                                    <mat-option>Device 1</mat-option>
+                                    <mat-option>Device 2</mat-option>
+                                    <mat-option>Device 3</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </p>
+
+                        <p>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Include data type for device</mat-label>
+                                <input matInput placeholder="Include data type for Sensor">
+                            </mat-form-field>
+                        </p>
+                    </mat-card-content>
+    
+                    <mat-card-actions>
+                        <button mat-button>Create new Sensor</button>
+                    </mat-card-actions>
+    
+                </mat-card>
+
+            <mat-card>
                 <mat-card-title>Sensor
                     <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new Sensor">
                         <mat-icon>add</mat-icon>
