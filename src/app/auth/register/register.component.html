@@ -20,6 +20,8 @@
                 </div>
               </form>
             </mat-step>
+
+
             <mat-step [stepControl]="secondFormGroup">
               <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>Fill out your address</ng-template>
@@ -32,6 +34,79 @@
                 </div>
               </form>
             </mat-step>
+
+
+            <mat-step [stepControl]="thirdFormGroup">
+              <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Address" formControlName="thirdCtrl" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+           
+
+            <mat-step [stepControl]="fourthFormGroup">
+              <form [formGroup]="fourthFormGroup">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Address" formControlName="fourthCtrl" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+           
+           
+            <mat-step [stepControl]="fivethFormGroup">
+              <form [formGroup]="fivethFormGroup">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Address" formControlName="fivethCtrl" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+
+            
+            <mat-step [stepControl]="sixthFormGroup">
+              <form [formGroup]="sixthFormGroup">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Address" formControlName="sixthCtrl" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+          
+          
+            <mat-step [stepControl]="seventhFormGroup">
+              <form [formGroup]="seventhFormGroup">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Address" formControlName="seventhCtrl" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+
             <mat-step>
               <ng-template matStepLabel>Done</ng-template>
               You are now done.
