@@ -1,75 +1,86 @@
 <mat-drawer-container class="container">
-        <!-- <mat-drawer #drawer mode="side" opened (mouseleave)="drawer.toggle()" (blur)="drawer.toggle()"> -->
-        <mat-drawer #drawer mode="side" opened><app-mat-drawer></app-mat-drawer></mat-drawer>
-    
-        <mat-drawer-content>
-            <app-toolbar-dashboard></app-toolbar-dashboard>
-        <!--     <h1>Data Type</h1>
-            <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h4>
+    <!-- <mat-drawer #drawer mode="side" opened (mouseleave)="drawer.toggle()" (blur)="drawer.toggle()"> -->
+    <mat-drawer #drawer mode="side" opened>
+        <app-mat-drawer></app-mat-drawer>
+    </mat-drawer>
 
- -->
-            <mat-card>
-                <mat-card-title>Data Type
-                    <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new data type">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </mat-card-title>
-                <mat-card-subtitle>Representação do tipo de dado que serão coletados por sensores IoT. Exemplos: temperatura, umidade, velocidade do vento, etc.</mat-card-subtitle>
-                <mat-card-content>
-                    <mat-form-field class="addIcon">
-                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar resultados">
-                    </mat-form-field>
-                    
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                    
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="position">
-                            <th mat-header-cell *matHeaderCellDef> No. </th>
-                            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                        </ng-container>
-                    
-                        <!-- Name Column -->
-                        <ng-container matColumnDef="name">
-                            <th mat-header-cell *matHeaderCellDef> Name </th>
-                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                        </ng-container>
-                    
-                        <!-- Weight Column -->
-                        <ng-container matColumnDef="weight">
-                            <th mat-header-cell *matHeaderCellDef> Weight </th>
-                            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                        </ng-container>
-                    
-                        <!-- Symbol Column -->
-                        <ng-container matColumnDef="symbol">
-                            <th mat-header-cell *matHeaderCellDef></th>
-                            <td mat-cell *matCellDef="let element"> 
-                                <div class="example-button-row">
-                                    <button mat-button class="addIcon" matTooltip="Delete data type"><mat-icon>delete</mat-icon></button>
-                                    <button mat-button class="addIcon" matTooltip="Edit data type"><mat-icon>edit</mat-icon></button>
-                                    <button mat-button class="addIcon" matTooltip="Details data type"><mat-icon>view_list</mat-icon></button>
-                                </div>
-                            </td>
-                        </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    </table>
-                </mat-card-content>
-            </mat-card>
-            
-            <mat-card>
-                <mat-card-title>Create new Data Type</mat-card-title>
-                <mat-card-subtitle>Criar uma representação do tipo de dado que serão coletados por sensores IoT.</mat-card-subtitle>
-                
-                <mat-card-content>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Data Type Description</mat-label>
-                        <input matInput placeholder="Inform your data type">
-                    </mat-form-field>
-                </mat-card-content>
-            </mat-card>
-        </mat-drawer-content>
-   
-    </mat-drawer-container>
-    
+    <mat-drawer-content>
+        <app-toolbar-dashboard></app-toolbar-dashboard>
+
+        <mat-card>
+            <mat-card-title>[Create] OR [Edit] new Data Type</mat-card-title>
+            <mat-card-subtitle>Criar uma representação do tipo de dado que serão coletados por sensores IoT.</mat-card-subtitle>
+
+            <mat-card-content>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Data Type Description</mat-label>
+                    <input matInput placeholder="Inform your data type">
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-button>Create new</button>
+            </mat-card-actions>
+
+        </mat-card>
+
+
+        <mat-card>
+            <mat-card-title>Data Type
+                <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new data type">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </mat-card-title>
+            <mat-card-subtitle>Representação do tipo de dado que serão coletados por sensores IoT. Exemplos: temperatura, umidade, velocidade
+                do vento, etc.</mat-card-subtitle>
+            <mat-card-content>
+                <mat-form-field class="addIcon">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar resultados">
+                </mat-form-field>
+
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="weight">
+                        <th mat-header-cell *matHeaderCellDef> Weight </th>
+                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="symbol">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element">
+                            <div class="example-button-row">
+                                <button mat-button class="addIcon" matTooltip="Delete data type">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button mat-button class="addIcon" matTooltip="Edit data type">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button mat-button class="addIcon" matTooltip="Details data type">
+                                    <mat-icon>view_list</mat-icon>
+                                </button>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+
+    </mat-drawer-content>
+</mat-drawer-container>
