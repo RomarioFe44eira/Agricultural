@@ -6,6 +6,44 @@
             <app-toolbar-dashboard></app-toolbar-dashboard>
 
             <mat-card>
+                <mat-card-title>[Create] OR [Edit] new Measurement</mat-card-title>
+                <mat-card-subtitle>Criar ou edita um representão para obtenção do valor de um sensor em ambiente IoT.</mat-card-subtitle>
+
+                <mat-card-content>
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Value</mat-label>
+                        <input matInput placeholder="Inform your Value for Measurement">
+                    </mat-form-field>
+                    
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Measurement Description</mat-label>
+                        <input matInput placeholder="Inform your Description for Measurement">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Geometry</mat-label>
+                        <input matInput placeholder="Inform your Geometry for Measurement">
+                    </mat-form-field>
+                    
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Sensor</mat-label>
+                        <input matInput placeholder="Inform your Sensor for Measurement">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Unit Measurement</mat-label>
+                        <input matInput placeholder="Inform your Unit Measurement for Measurement">
+                    </mat-form-field>
+
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-button>Create new</button>
+                </mat-card-actions>
+
+            </mat-card>
+
+            <mat-card>
                 <mat-card-title>Measurement
                     <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new Measurement">
                         <mat-icon>add</mat-icon>
