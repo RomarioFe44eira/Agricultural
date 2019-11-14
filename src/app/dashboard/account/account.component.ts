@@ -22,14 +22,13 @@ export class AccountComponent implements OnInit {
 
   getPerson(){
     this.personService.getPersonAuthenticated().subscribe(
-      (person) => {
+      (person: Person) => {
         console.log(person);
         this.person = person;
       },
       error => {
         console.log(error);
       }
-
     );
   }
 

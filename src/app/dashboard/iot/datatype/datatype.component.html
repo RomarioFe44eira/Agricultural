@@ -56,15 +56,18 @@
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
                 </mat-card-content>
-
-              <!--   <mat-card-actions>
-                    <div class="example-button-row">
-                        <button mat-raised-button color="primary">Primary</button>
-                        <button mat-raised-button color="accent">Accent</button>
-                        <button mat-raised-button color="warn">Warn</button>
-                    </div>
-                </mat-card-actions> -->
-
+            </mat-card>
+            
+            <mat-card>
+                <mat-card-title>Create new Data Type</mat-card-title>
+                <mat-card-subtitle>Criar uma representação do tipo de dado que serão coletados por sensores IoT.</mat-card-subtitle>
+                
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Data Type Description</mat-label>
+                        <input matInput placeholder="Inform your data type">
+                    </mat-form-field>
+                </mat-card-content>
             </mat-card>
         </mat-drawer-content>
    
