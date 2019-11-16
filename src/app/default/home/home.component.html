@@ -1,10 +1,22 @@
 <app-toolbar-default></app-toolbar-default>
-<mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile
-        *ngFor="let tile of tiles"
-        [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.background]="tile.color">
-      {{tile.text}}
-    </mat-grid-tile>
-  </mat-grid-list>
+
+<mat-card>
+  <mat-card-title>Home</mat-card-title>
+  <mat-card-subtitle>Página inicial da aplicação</mat-card-subtitle>
+  <mat-card-content>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam velit odio,
+    fermentum volutpat leo vitae, maximus interdum erat. Sed sodales varius est ut dapibus.
+    Sed a neque sit amet dolor venenatis tristique vitae in enim. Quisque iaculis porta mi,
+    ac mattis ante. Donec gravida, felis eu sodales bibendum, nunc metus porta lectus, 
+    vel hendrerit justo massa non leo. Quisque rutrum hendrerit ligula ut euismod.
+    Phasellus et maximus justo. Nunc ut neque sit amet neque tempus dictum.
+    Aliquam vulputate molestie nisl, vel cursus dui vehicula eu. Vivamus neque odio,
+    tempus ac dignissim eu, pretium et massa. Phasellus ullamcorper cursus consequat. 
+    Proin ultrices, nisi eget posuere vehicula, felis lectus volutpat ligula, 
+    eget molestie turpis odio in lectus. Nullam eleifend lectus ac lectus dictum gravida.
+    Suspendisse est turpis, dapibus sit amet cursus nec, fermentum sit amet felis.
+    Phasellus tempor risus id ultrices volutpat. Proin vel auctor dolor. 
+    Sed dictum ligula eu augue auctor, ut dapibus nibh interdum. 
+    Aliquam augue ipsum, bibendum at nisl id, laoreet lacinia urna.
+  </mat-card-content>
+</mat-card>

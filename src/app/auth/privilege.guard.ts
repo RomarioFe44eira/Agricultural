@@ -7,7 +7,7 @@ import { isNullOrUndefined } from 'util';
 @Injectable({
   providedIn: 'root'
 })
-export class TypeUserGuard implements CanActivate {
+export class PrivilegeGuard implements CanActivate {
  
   constructor(
     private router: Router, 
@@ -16,11 +16,11 @@ export class TypeUserGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      if (isNullOrUndefined(this.auth.currentTokenValue))
+      if (true)
         return true;
       
       this.router.navigate(['']);
-      this.snackbar.openSnackBar('Não foi possível acessar o dashboard da cooperativa, pois não possui privilégios.', 'OK');
+      this.snackbar.openSnackBar('Não foi possível acessar o dashboard da cooperativa, sua conta não tem privilégios suficientes.', 'OK');
       return false;
   }
 }
