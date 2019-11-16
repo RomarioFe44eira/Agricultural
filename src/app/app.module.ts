@@ -12,6 +12,14 @@ import { FormsModule } from '@angular/forms';
 import { DefaultModule } from './default/default.module';
 import { PersonModule } from './person/person.module';
 import { IotModule } from './dashboard/iot/iot.module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { CooperativaModule } from './cooperativa/cooperativa.module';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +37,13 @@ import { IotModule } from './dashboard/iot/iot.module';
     DefaultModule,
     PersonModule,
     IotModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
+    CooperativaModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

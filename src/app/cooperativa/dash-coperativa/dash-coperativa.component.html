@@ -1,0 +1,54 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+
+    Cooperativa
+
+      <mat-list>
+          <h3 mat-subheader>Folders</h3>
+          <mat-list-item *ngFor="let folder of folders">
+            <mat-icon mat-list-icon>{{folder.icon}}</mat-icon>
+            <h4 mat-line>{{folder.name}}</h4>
+            <p mat-line> {{folder.updated | date}} </p>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <h3 mat-subheader>Notes</h3>
+          <mat-list-item *ngFor="let note of notes">
+            <mat-icon mat-list-icon>{{note.icon}}</mat-icon>
+            <h4 mat-line>{{note.name}}</h4>
+            <p mat-line> {{note.updated | date}} </p>
+          </mat-list-item>
+        </mat-list>
+
+
+  </mat-drawer>
+  
+  
+  <mat-drawer-content>
+      <mat-toolbar>Agricultural</mat-toolbar>
+    <div class="grid-container">
+      <h1 class="mat-h1">Dashboard</h1>
+      <mat-grid-list cols="2" rowHeight="350px">
+        <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+          <mat-card class="dashboard-card">
+            <mat-card-header>
+              <mat-card-title>
+                {{card.title}}
+                <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="before">
+                  <button mat-menu-item>Expand</button>
+                  <button mat-menu-item>Remove</button>
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+              <div>Card Content Here</div>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>
