@@ -17,7 +17,7 @@ export class PrivilegeGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
       if (true)
-        return true;
+        return false;
       
       this.router.navigate(['']);
       this.snackbar.openSnackBar('Não foi possível acessar o dashboard da cooperativa, sua conta não tem privilégios suficientes.', 'OK');

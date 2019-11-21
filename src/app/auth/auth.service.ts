@@ -84,3 +84,13 @@ export class AuthService {
 
 
 }
+
+
+
+/* 
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.authService.currentTokenValue,
+    });
+  } */
