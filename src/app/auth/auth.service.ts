@@ -24,12 +24,20 @@ export class AuthService {
   }
 
 
-  private getHeaders(): HttpHeaders {
+  public getHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'text/plain'
     });
   }
+
+  public getHeadersAuthorization(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.currentTokenValue,
+    });
+  }
+
 
 
   // Realiza a autenticação de um usuário
