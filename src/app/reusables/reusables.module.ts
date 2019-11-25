@@ -4,11 +4,12 @@ import { InputEmailComponent } from './inputs/input-email/input-email.component'
 import { InputPasswordComponent } from './inputs/input-password/input-password.component';
 import { FormsModule } from '@angular/forms';
 import { Material } from '../material';
+import { InputGenericComponent } from './inputs/input-generic/input-generic.component';
 
 
 
 @NgModule({
-  declarations: [InputEmailComponent, InputPasswordComponent],
+  declarations: [InputEmailComponent, InputPasswordComponent, InputGenericComponent],
   imports: [
     CommonModule,
     FormsModule,

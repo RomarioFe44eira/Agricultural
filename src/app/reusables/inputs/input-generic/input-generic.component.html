@@ -1,0 +1,16 @@
+<p>
+    <mat-form-field appearance="fill">
+        <mat-label>{{ label }}</mat-label>
+        
+        <input 
+            matInput 
+            placeholder="generic input"
+            [formControl]="genericText"
+            (change)="mailChange()"
+            required
+        >        
+        <mat-icon matSuffix [matTooltip]="matTooltip">{{icon}}</mat-icon>
+        
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+</p>

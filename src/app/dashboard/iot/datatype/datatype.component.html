@@ -14,7 +14,7 @@
             <mat-card-content>
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Data Type Description</mat-label>
-                    <input matInput placeholder="Inform your data type">
+                    <input #description matInput placeholder="Inform your data type">
                 </mat-form-field>
             </mat-card-content>
 
@@ -25,7 +25,7 @@
         </mat-card>
 
 
-        <mat-card>
+        <mat-card *ngIf="dataSource">
             <mat-card-title>Data Type
                 <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new data type">
                     <mat-icon>add</mat-icon>
@@ -41,25 +41,19 @@
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
                     <!-- Position Column -->
-                    <ng-container matColumnDef="position">
+                    <ng-container matColumnDef="id">
                         <th mat-header-cell *matHeaderCellDef> No. </th>
-                        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                     </ng-container>
 
                     <!-- Name Column -->
-                    <ng-container matColumnDef="name">
+                    <ng-container matColumnDef="description">
                         <th mat-header-cell *matHeaderCellDef> Description </th>
-                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                    </ng-container>
-
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="weight">
-                        <th mat-header-cell *matHeaderCellDef> Weight </th>
-                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
                     </ng-container>
 
                     <!-- Symbol Column -->
-                    <ng-container matColumnDef="symbol">
+                    <ng-container matColumnDef="action">
                         <th mat-header-cell *matHeaderCellDef></th>
                         <td mat-cell *matCellDef="let element">
                             <div class="example-button-row">
