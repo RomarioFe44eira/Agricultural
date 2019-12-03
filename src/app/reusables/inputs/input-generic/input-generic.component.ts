@@ -18,7 +18,7 @@ export class InputGenericComponent implements OnInit {
   @Input() placeholder: string = "Placeholder"
 
   
-  @Output() outValue: string = new EventEmitter<>();
+  @Output() outValue: string = new EventEmitter<any>();
 
 
   public genericText = new FormControl(
