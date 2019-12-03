@@ -18,7 +18,7 @@ export class InputGenericComponent implements OnInit {
   @Input() placeholder: string = "Placeholder"
 
   
-  @Output() outValue: string = new EventEmitter<any>();
+  /* @Output() outValue: string = new EventEmitter<any>(); */
 
 
   public genericText = new FormControl(
@@ -30,12 +30,12 @@ export class InputGenericComponent implements OnInit {
   ngOnInit() {
   }
 
-  genericChange() {
+ /*  genericChange() {
     if (this.genericText.status == 'VALID') {
       this.outValue.emit(this.genericText.value);
     } else {
       this.snack.openSnackBar('Your email has errors');
     }
-  }
+  } */
 
 }
