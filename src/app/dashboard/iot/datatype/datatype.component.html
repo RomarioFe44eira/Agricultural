@@ -12,10 +12,13 @@
             <mat-card-subtitle>{{ (createOrEdit ? 'Criar' : 'Editar')}} uma representação do tipo de dado que serão coletados por sensores IoT.</mat-card-subtitle>
 
             <mat-card-content>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>Data Type Description</mat-label>
-                    <input #description matInput placeholder="Inform your data type">
-                </mat-form-field>
+                <form>
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Data Type Description</mat-label>
+                        <input #description matInput placeholder="Inform your data type" [(ngModel)]="dType.description">
+                    </mat-form-field>
+                </form>
+                
             </mat-card-content>
 
             <mat-card-actions>
@@ -32,8 +35,10 @@
                     <mat-icon>add</mat-icon>
                 </button>
             </mat-card-title>
-            <mat-card-subtitle>Representação do tipo de dado que serão coletados por sensores IoT. Exemplos: temperatura, umidade, velocidade
-                do vento, etc.</mat-card-subtitle>
+           
+            <mat-card-subtitle>Representação do tipo de dado que serão coletados por sensores IoT. 
+            Exemplos: temperatura, umidade, velocidade do vento, etc.</mat-card-subtitle>
+            
             <mat-card-content>
                 <mat-form-field class="addIcon">
                     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar resultados">
@@ -76,9 +81,6 @@
                 </table>
             </mat-card-content>
         </mat-card>
-
-
-       
 
     </mat-drawer-content>
 </mat-drawer-container>

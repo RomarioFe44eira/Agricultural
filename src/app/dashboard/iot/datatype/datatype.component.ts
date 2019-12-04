@@ -14,6 +14,9 @@ export class DatatypeComponent implements OnInit {
   displayedColumns: string[] = ['id', 'description', 'action'];
   dataSource;
 
+  public textValue;
+
+  public dType: DataType;
 
   public cardVisible;
   public createOrEdit;
@@ -35,12 +38,12 @@ export class DatatypeComponent implements OnInit {
   }
 
   insertDataType(){
-    let dType: DataType = new DataType();
-    dType.description = "Credo do Assasino";
-    dType.person = {id: 85};
+    
+    
+    this.dType.person = {id: 85};
     
 
-   this.iotSevice.insertDataType(dType).subscribe(
+   this.iotSevice.insertDataType(this.dType).subscribe(
       data => {
         console.log(data);
         alert("inseriu");
