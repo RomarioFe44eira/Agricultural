@@ -7,9 +7,9 @@
     <mat-drawer-content>
         <app-toolbar-dashboard></app-toolbar-dashboard>
 
-        <mat-card>
-            <mat-card-title>[Create] OR [Edit] new Data Type</mat-card-title>
-            <mat-card-subtitle>Criar uma representação do tipo de dado que serão coletados por sensores IoT.</mat-card-subtitle>
+        <mat-card *ngIf="cardVisible == true">
+            <mat-card-title>{{ (createOrEdit ? 'Create new' : 'Edit')}} Data Type</mat-card-title>
+            <mat-card-subtitle>{{ (createOrEdit ? 'Criar' : 'Editar')}} uma representação do tipo de dado que serão coletados por sensores IoT.</mat-card-subtitle>
 
             <mat-card-content>
                 <mat-form-field class="full-width" appearance="fill">
@@ -19,15 +19,16 @@
             </mat-card-content>
 
             <mat-card-actions>
-                <button mat-button (click)="insertDataType()">Create new</button>
+                <button mat-button color="warn" (click)="cardVisible = false">Cancel</button>
+                <button mat-button (click)="insertDataType()">{{ (createOrEdit ? 'Create new' : 'Edit data type')}}</button>
             </mat-card-actions>
 
         </mat-card>
 
 
-        <mat-card *ngIf="dataSource">
+        <mat-card *ngIf="dataSource else loading">
             <mat-card-title>Data Type
-                <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new data type">
+                <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new data type" (click)="cardVisible = true; createOrEdit = true">
                     <mat-icon>add</mat-icon>
                 </button>
             </mat-card-title>
@@ -60,7 +61,7 @@
                                 <button mat-button class="addIcon" matTooltip="Delete data type">
                                     <mat-icon>delete</mat-icon>
                                 </button>
-                                <button mat-button class="addIcon" matTooltip="Edit data type">
+                                <button mat-button class="addIcon" matTooltip="Edit data type" (click)="cardVisible = true; createOrEdit = false">
                                     <mat-icon>edit</mat-icon>
                                 </button>
                                 <button mat-button class="addIcon" matTooltip="Details data type">
@@ -76,5 +77,15 @@
             </mat-card-content>
         </mat-card>
 
+
+       
+
     </mat-drawer-content>
 </mat-drawer-container>
+
+<ng-template #loading>
+    <mat-card>
+        <mat-spinner diameter="20"></mat-spinner>
+        <p class="load">Load information data type</p>
+    </mat-card>
+</ng-template>

@@ -14,6 +14,10 @@ export class DatatypeComponent implements OnInit {
   displayedColumns: string[] = ['id', 'description', 'action'];
   dataSource;
 
+
+  public cardVisible;
+  public createOrEdit;
+
   typeDescription: any;
 
   public dTypeListaTable: DataType;

@@ -1,22 +1,13 @@
 
 mat-icon {padding: 0 14px;}
 
-mat-list-item:hover{
-    background: linear-gradient(
-        to left,
-        #f00261,
-        #c2185b
-    );
-    border-radius: 8px;
+button{
+    text-align: left;
+    padding: 4%;
+    padding-right: 5px;
+    width: 100%;
 }
 
-.router-link-active{
-    background: linear-gradient(
-        to left,
-        #24010f,
-        #5a1631,
-        #634652,
-        gray
-    );
-    border-radius: 12px;
+.button-row button, .button-row a {
+  margin-right: 8px;
 }

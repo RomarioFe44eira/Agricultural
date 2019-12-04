@@ -5,9 +5,9 @@
 
     <mat-card-content>
         <mat-list role="list">
-            <mat-list-item role="listitem" *ngFor="let item of drawerMenu" [routerLink]="item.routerLink" routerLinkActive="router-link-active" > 
-                <mat-icon>{{item.icon}}</mat-icon>{{ item.name }}
-            </mat-list-item>
+            <div class="button-row" *ngFor="let item of drawerMenu" [routerLink]="item.routerLink" routerLinkActive="router-link-active" >
+                <button mat-button><mat-icon>{{item.icon}}</mat-icon>{{ item.name }}</button>
+            </div>
         </mat-list>
     </mat-card-content>
 </mat-card>
