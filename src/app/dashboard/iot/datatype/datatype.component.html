@@ -12,10 +12,11 @@
             <mat-card-subtitle>{{ (createOrEdit ? 'Criar' : 'Editar')}} uma representação do tipo de dado que serão coletados por sensores IoT.</mat-card-subtitle>
 
             <mat-card-content>
-                <form>
+                <form [formGroup]="datatype">
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Data Type Description</mat-label>
-                        <input #description matInput placeholder="Inform your data type" [(ngModel)]="dType.description">
+                        <input matInput placeholder="Inform your data type" formControlName="description" >
+                        <mat-hint>{{datatype.value.description}}</mat-hint>
                     </mat-form-field>
                 </form>
                 
