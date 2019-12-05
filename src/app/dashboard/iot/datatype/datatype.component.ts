@@ -67,8 +67,9 @@ export class DatatypeComponent implements OnInit {
 
     if(!isNullOrUndefined(dType.description)){
       this.iotSevice.insertDataType(dType).subscribe(
-        data => {
+        (data: DataType) => {
           console.log(data);
+          this.dataSource.data.push(data);
           this.snackbarService.openSnackBar('Data Type create sucessfuly!');
         },
         error => {
@@ -116,6 +117,8 @@ export class DatatypeComponent implements OnInit {
   updateDataType(dType: DataType){
     console.log('update');
     
+    
+
     dType = this.dTypeGlobal;
     dType.description = this.datatype.value.description;
     console.log(dType);
@@ -125,6 +128,7 @@ export class DatatypeComponent implements OnInit {
         data => {
           console.log(data);
           this.snackbarService.openSnackBar(dType.description + ' foi atualizado!');
+          this.cardVisible = false;
         },
         error => {
           console.log(error);
@@ -140,6 +144,15 @@ export class DatatypeComponent implements OnInit {
   }
 
 
+  public editCase(i:number){
+    console.log('id: '+i);
+    this.datatype.value.description = this.dataSource.data[i].description;
+    this.dTypeGlobal = this.dataSource.data[i];
+    this.cardVisible = true;
+    this.createOrEdit = false;
+  }
+
+  
 
 
 }

@@ -72,13 +72,9 @@
                         <th mat-header-cell *matHeaderCellDef></th>
                         <td mat-cell *matCellDef="let element; let i = index">
                             <div class="example-button-row">
-                                <button mat-button class="addIcon" matTooltip="Delete data type" (click)="deleteDataType(dataSource.data[i])"><mat-icon>delete</mat-icon></button>
+                                <button mat-button class="addIcon" matTooltip="Delete data type" (click)="deleteDataType(dataSource.data[i], i)"><mat-icon>delete</mat-icon></button>
                                 <button mat-button class="addIcon" matTooltip="Edit data type"
-                                (click)="
-                                    this.datatype.value.description = dataSource.data[i].description;
-                                    dTypeGlobal = dataSource.data[i];
-                                    cardVisible = true;
-                                    createOrEdit = false;"
+                                (click)="editCase(i)"                                    
                                 ><mat-icon>edit</mat-icon></button>
                             </div>
                         </td>
@@ -88,9 +84,9 @@
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-              
-
+                <pre>
+                    {{dataSource.data |json}}
+                </pre>
             </mat-card-content>
         </mat-card>
 
