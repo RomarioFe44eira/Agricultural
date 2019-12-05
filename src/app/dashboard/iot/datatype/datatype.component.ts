@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { IotService } from '../iot.service';
 
@@ -9,6 +9,8 @@ import { PersonService } from 'src/app/person/person.service';
 import { Person } from 'src/app/person/person.model';
 import { isNullOrUndefined } from 'util';
 
+import {MatPaginator} from '@angular/material/paginator';
+
 @Component({
   selector: 'app-datatype',
   templateUrl: './datatype.component.html',
@@ -16,7 +18,7 @@ import { isNullOrUndefined } from 'util';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatatypeComponent implements OnInit {
-  public dataSource;
+  dataSource = new MatTableDataSource<DataType>([]);
   public cardVisible
   public createOrEdit;
   public datatype: FormGroup;
@@ -24,7 +26,8 @@ export class DatatypeComponent implements OnInit {
   public dTypeGlobal: DataType;
 
   displayedColumns: string[] = ['id', 'description', 'action'];
-  
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
   constructor(
     private iotSevice: IotService,
     private fb: FormBuilder,
@@ -32,7 +35,10 @@ export class DatatypeComponent implements OnInit {
     private personService: PersonService
   ) { }
 
+
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+
     this.readAllDataTypes();
     this.datatype = this.fb.group({
       description: ['', [Validators.required, Validators.min(2)]]
@@ -77,10 +83,10 @@ export class DatatypeComponent implements OnInit {
 
    readAllDataTypes(){
     this.iotSevice.readAllDataType().subscribe(
-      (data: any) => {
+      (data: DataType[]) => {
         console.log(data);
-        this.dataSource = new MatTableDataSource(data);
-        /* this.dataSource = data; */
+        this.dataSource.data = data;
+        /* console.log(this.dataSource.data); */
       },
       error => {
         console.log(error);

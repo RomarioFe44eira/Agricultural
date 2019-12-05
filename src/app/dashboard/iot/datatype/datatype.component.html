@@ -33,9 +33,17 @@
         </mat-card>
 
 
-        <mat-card *ngIf="dataSource else loading">
+        <mat-card *ngIf="this.dataSource.data else loading">
             <mat-card-title>Data Type
-                <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new data type" (click)="cardVisible = true; createOrEdit = true">
+                <button 
+                    mat-mini-fab 
+                    color="primary" 
+                    class="addIcon"
+                    matTooltip="Include new data type"
+                    (click)="
+                        cardVisible = true;
+                        createOrEdit = true
+                    ">
                     <mat-icon>add</mat-icon>
                 </button>
             </mat-card-title>
@@ -80,7 +88,7 @@
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
-
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
               
 
             </mat-card-content>

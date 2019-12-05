@@ -24,8 +24,8 @@ export class IotService {
   ) { }
 
 
-  public readAllDataType = (): Observable<DataType> => {
-    return this.http.get<DataType>(
+  public readAllDataType = (): Observable<DataType[]> => {
+    return this.http.get<DataType[]>(
       getDefaultURL(this.uri),{ headers: this.authService.getHeadersAuthorization()}
     )
   }
