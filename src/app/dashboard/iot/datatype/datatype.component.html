@@ -15,7 +15,7 @@
                 <form [formGroup]="datatype">
                     <mat-form-field class="full-width" appearance="fill">
                         <mat-label>Data Type Description</mat-label>
-                        <input matInput placeholder="Inform your data type" formControlName="description" >
+                        <input matInput placeholder="Inform your data type" formControlName="description" [value]="this.datatype.value.description" >
                         <mat-hint>{{datatype.value.description}}</mat-hint>
                     </mat-form-field>
                 </form>
@@ -23,8 +23,11 @@
             </mat-card-content>
 
             <mat-card-actions>
-                <button mat-button color="warn" (click)="cardVisible = false">Cancel</button>
-                <button mat-button (click)="insertDataType()">{{ (createOrEdit ? 'Create new' : 'Edit data type')}}</button>
+               <!--  <button mat-button color="warn" (click)="cardVisible = false">Cancel</button> -->
+                <button mat-button *ngIf="createOrEdit" (click)="insertDataType()">Create</button>
+                <button mat-stroked-button *ngIf="!createOrEdit" (click)="updateDataType()">
+                    <mat-icon>save</mat-icon> Save
+                </button>
             </mat-card-actions>
 
         </mat-card>
@@ -47,39 +50,39 @@
 
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                    <!-- Position Column -->
                     <ng-container matColumnDef="id">
                         <th mat-header-cell *matHeaderCellDef> No. </th>
                         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                     </ng-container>
 
-                    <!-- Name Column -->
                     <ng-container matColumnDef="description">
                         <th mat-header-cell *matHeaderCellDef> Description </th>
                         <td mat-cell *matCellDef="let element"> {{element.description}} </td>
                     </ng-container>
 
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="action">
                         <th mat-header-cell *matHeaderCellDef></th>
-                        <td mat-cell *matCellDef="let element">
+                        <td mat-cell *matCellDef="let element; let i = index">
                             <div class="example-button-row">
-                                <button mat-button class="addIcon" matTooltip="Delete data type">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-                                <button mat-button class="addIcon" matTooltip="Edit data type" (click)="cardVisible = true; createOrEdit = false">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
-                                <button mat-button class="addIcon" matTooltip="Details data type">
-                                    <mat-icon>view_list</mat-icon>
-                                </button>
+                                <button mat-button class="addIcon" matTooltip="Delete data type" (click)="deleteDataType(dataSource.data[i])"><mat-icon>delete</mat-icon></button>
+                                <button mat-button class="addIcon" matTooltip="Edit data type"
+                                (click)="
+                                    this.datatype.value.description = dataSource.data[i].description;
+                                    dTypeGlobal = dataSource.data[i];
+                                    cardVisible = true;
+                                    createOrEdit = false;"
+                                ><mat-icon>edit</mat-icon></button>
                             </div>
                         </td>
+                        
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
+
+              
+
             </mat-card-content>
         </mat-card>
 
