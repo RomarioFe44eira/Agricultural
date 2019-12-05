@@ -19,10 +19,11 @@ import {MatPaginator} from '@angular/material/paginator';
 })
 export class DatatypeComponent implements OnInit {
   dataSource = new MatTableDataSource<DataType>([]);
-  public cardVisible
-  public createOrEdit;
-  public datatype: FormGroup;
+  
+  public cardVisible:boolean;
+  public createOrEdit:boolean;
 
+  public datatype: FormGroup;
   public dTypeGlobal: DataType;
 
   displayedColumns: string[] = ['id', 'description', 'action'];
@@ -96,21 +97,14 @@ export class DatatypeComponent implements OnInit {
   }
 
   //CORRIGIR
-  deleteDataType(dType: DataType){
+  deleteDataType(dType: DataType, position: number){
     console.log(dType);
     
     this.iotSevice.deleteDataType(dType).subscribe(
       data =>{
         console.log(data);
-        /* delete(this.dataSource.data[dType.id]); */
-
-        let i = 0;
-        this.dataSource.data.forEach(element => {
-          if (element.id == dType.id) {
-            delete(this.dataSource.data[i]);
-          }
-          i++;
-        });
+        delete(this.dataSource.data[position]);
+        this.snackbarService.openSnackBar('Data type deleted!');
       },
       error => {
         console.log(error);
