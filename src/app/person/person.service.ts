@@ -78,6 +78,9 @@ export class PersonService {
   }
 
 
+public getPersonSessionStorage(){
+  return JSON.parse(sessionStorage.getItem('person'));
+}
 
 
 

@@ -5,7 +5,7 @@
         <mat-drawer-content>
             <app-toolbar-dashboard></app-toolbar-dashboard>
 
-            <mat-card>
+           <!--  <mat-card>
                     <mat-card-title>[Create] OR [Edit] new Sensor</mat-card-title>
                     <mat-card-subtitle>Um sensor está associado a um dispositivo IoT..</mat-card-subtitle>
     
@@ -34,11 +34,11 @@
                         <button mat-button>Create new Sensor</button>
                     </mat-card-actions>
     
-                </mat-card>
+                </mat-card> -->
 
             <mat-card>
                 <mat-card-title>Sensor
-                    <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new Sensor">
+                    <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new Sensor" (click)="openDialog()">
                         <mat-icon>add</mat-icon>
                     </button>
                 </mat-card-title>
@@ -49,27 +49,23 @@
                     </mat-form-field>
                     
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                    
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="position">
+                        <ng-container matColumnDef="id">
                             <th mat-header-cell *matHeaderCellDef> No. </th>
-                            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                         </ng-container>
                     
-                        <!-- Name Column -->
-                        <ng-container matColumnDef="name">
-                            <th mat-header-cell *matHeaderCellDef> Name </th>
-                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        <ng-container matColumnDef="device">
+                            <th mat-header-cell *matHeaderCellDef> Device </th>
+                            <td mat-cell *matCellDef="let element"> {{element.device.description}} - {{element.device.id}} </td>
                         </ng-container>
                     
-                        <!-- Weight Column -->
-                        <ng-container matColumnDef="weight">
-                            <th mat-header-cell *matHeaderCellDef> Weight </th>
-                            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                    
+                        <ng-container matColumnDef="datatype">
+                            <th mat-header-cell *matHeaderCellDef> DataType </th>
+                            <td mat-cell *matCellDef="let element"> {{element.dataType.description}}-{{element.dataType.id}} </td>
                         </ng-container>
                     
-                        <!-- Symbol Column -->
-                        <ng-container matColumnDef="symbol">
+                        <ng-container matColumnDef="action">
                             <th mat-header-cell *matHeaderCellDef></th>
                             <td mat-cell *matCellDef="let element"> 
                                 <div class="example-button-row">

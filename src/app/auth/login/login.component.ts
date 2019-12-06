@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
             console.log(data);
             this.auth.currentTokenValue = data;
             sessionStorage.setItem('token', data);
+            
             this.router.navigate(['/dashboard']);
           },
           error => {

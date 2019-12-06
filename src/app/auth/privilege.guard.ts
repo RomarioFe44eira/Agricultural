@@ -3,6 +3,7 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { AuthService } from './auth.service';
 import { SnackbarService } from '../reusables/snackbar.service';
 import { isNullOrUndefined } from 'util';
+import { Person } from '../person/person.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,19 @@ export class PrivilegeGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      if (true)
-        return false;
+
+    if (!isNullOrUndefined(sessionStorage.getItem('person'))) {
+      let person: Person = JSON.parse(sessionStorage.getItem('person'));
+      if (person.admin)
+        return true;
+    
       
-      this.router.navigate(['']);
       this.snackbar.openSnackBar('Não foi possível acessar o dashboard da cooperativa, sua conta não tem privilégios suficientes.', 'OK');
+      this.router.navigate(['']);
       return false;
+    }
+
+
+     
   }
 }

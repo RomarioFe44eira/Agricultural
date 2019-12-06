@@ -75,6 +75,7 @@ export class AuthService {
 
   public logout() {
     /* console.log('acessou lougout'); */
+    sessionStorage.removeItem('person');
     this.snackbar.openSnackBar('Account disconnected', 'OK');
 
     sessionStorage.removeItem('token');

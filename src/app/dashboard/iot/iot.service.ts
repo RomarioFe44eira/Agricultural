@@ -8,14 +8,17 @@ import { DataType } from './datatype/datatype.model'
 import { PersonService } from 'src/app/person/person.service';
 import { Person } from 'src/app/person/person.model';
 import { SnackbarService } from 'src/app/reusables/snackbar.service';
+import { Sensor } from './sensor/sensor.model';
+import { Device } from './device/device.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IotService {
   
-  public uri: string = 'datatype';
-
+  private uri: string = 'datatype';
+  private uriSensor: string = 'sensor';
+  
   constructor(
     private http: HttpClient,
     private authService: AuthService,
@@ -23,7 +26,7 @@ export class IotService {
     private snackbarService: SnackbarService
   ) { }
 
-
+  /////////   DATA TYPE       /////////////////////////////////////////////////
   public readAllDataType = (): Observable<DataType[]> => {
     return this.http.get<DataType[]>(
       getDefaultURL(this.uri),{ headers: this.authService.getHeadersAuthorization()}
@@ -59,5 +62,30 @@ export class IotService {
       getDefaultURL(this.uri + '/' + dType.id), {headers: this.authService.getHeadersAuthorization()}
     )
   }
+
+
+
+
+
+
+  /////////// DEVICE //////////////////////////////////////////////////////////
+  readAllDevice = (): Observable<Device[]> => { // Buscar os dispositivos do usuário autenticado
+    return this.http.get<Device[]>(
+      getDefaultURL('device'),{ headers: this.authService.getHeadersAuthorization()}
+    )
+  }
+
+  /////////// SENSOR //////////////////////////////////////////////////////////
+  readAllSensorsOfDevice = (): Observable<Sensor[]> => { // Buscar os sensores de um dispositivo
+    return this.http.get<Sensor[]>(
+      getDefaultURL('device/32/' + this.uriSensor),{ headers: this.authService.getHeadersAuthorization()}
+    )
+  }
+/*
+  readSensor = (sensor:Sensor): Observable<Sensor[]> => {}
+  insertSensor = (sensor:Sensor): Observable<Sensor[]> => {}
+  updateSensor = (sensor:Sensor): Observable<string> => {}
+  deleteSernsor = (sensor:Sensor): Observable<string> => {} */
+  
 
 }

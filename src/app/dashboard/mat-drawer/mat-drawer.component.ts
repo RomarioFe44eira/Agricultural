@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Person } from 'src/app/person/person.model';
+import { PersonService } from 'src/app/person/person.service';
 
 export interface drawerItens {
   name: string;
@@ -25,9 +27,14 @@ export class MatDrawerComponent implements OnInit {
   today: number = Date.now();
   public drawerMenu = DRAWERMENU;
 
-  constructor() { }
+  public person: Person
+
+  constructor(
+    private personService: PersonService
+  ) { }
 
   ngOnInit() {
+    this.person = this.personService.getPersonSessionStorage();
   }
 
 }

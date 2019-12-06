@@ -19,11 +19,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CooperativaModule } from './cooperativa/cooperativa.module';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,10 @@ import { CooperativaModule } from './cooperativa/cooperativa.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: []
+  exports: [],
+  entryComponents: [
+    DialogComponent
+  ],
+
 })
 export class AppModule { }
