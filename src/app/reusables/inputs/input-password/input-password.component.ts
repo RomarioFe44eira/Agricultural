@@ -11,7 +11,7 @@ export class InputPasswordComponent implements OnInit {
 
   public passVisible = false;
   @Output() outPassword = new EventEmitter<any>();
-  public pass = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  public pass = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
   constructor(private _snackBar: MatSnackBar) { }
 

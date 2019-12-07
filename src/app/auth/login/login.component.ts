@@ -3,6 +3,8 @@ import { AuthService } from '../auth.service';
 import { Route, Router } from '@angular/router';
 import { SnackbarService } from '../../reusables/snackbar.service';
 import { isNullOrUndefined } from 'util';
+import { PersonService } from 'src/app/person/person.service';
+import { Person } from 'src/app/person/person.model';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
+    private personService: PersonService,
     private snackbar: SnackbarService
   ) { }
 
@@ -80,7 +83,18 @@ export class LoginComponent implements OnInit {
             this.auth.currentTokenValue = data;
             sessionStorage.setItem('token', data);
             
-            this.router.navigate(['/dashboard']);
+            this.personService.getPersonAuthenticated().subscribe(
+              (person:Person) => {
+                sessionStorage.setItem('person', JSON.stringify(person));
+                if (person.admin) this.router.navigate(['/cooperativa']); else this.router.navigate(['/dashboard']);   
+              },
+              error => {
+                console.log(error.error.message);
+              }
+
+            );
+
+            /* this.router.navigate(['/dashboard']); */
           },
           error => {
             const e = JSON.parse(error.error);
