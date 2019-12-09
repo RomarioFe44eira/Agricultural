@@ -54,6 +54,7 @@ export class DialogComponent implements OnInit {
         (data) => {
           console.log(data);
           this.snackbarService.openSnackBar('Sensor cadastrado com sucesso!');
+          this.dialogRef.close();
         },
         error => {
           console.log(error);
@@ -61,8 +62,6 @@ export class DialogComponent implements OnInit {
         }
       );
 
-
-     
     } else {
       if (isNullOrUndefined(this.device)) {
         this.snackbarService.openSnackBar('Choice a device');

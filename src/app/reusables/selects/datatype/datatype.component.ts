@@ -19,7 +19,7 @@ export class DatatypeComponent implements OnInit {
   @Input() public inLabel: string = 'Select a Data Type';
   @Input() public inVisible: boolean = true;
   @Input() public inDisabled: boolean = false;
-  @Input() public inValueSelectedInitial;
+  @Input() public inValueSelectedInitial: string;
 
 
   public dataTypes: DataType[] = [];

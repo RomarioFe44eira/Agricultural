@@ -3,6 +3,7 @@ import { SnackbarService } from '../../snackbar.service';
 import { IotService } from 'src/app/dashboard/iot/iot.service';
 import { Device } from 'src/app/dashboard/iot/device/device.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Sensor } from 'src/app/dashboard/iot/sensor/sensor.model';
 
 @Component({
   selector: 'app-select-device',
@@ -18,7 +19,8 @@ export class DeviceComponent implements OnInit {
   @Input() public inLabel: string = 'Select a device';
   @Input() public inVisible: boolean = true;
   @Input() public inDisabled: boolean = true;
-  @Input() public inValueSelectedInitial;
+  @Input() public inValueSelectedInitial: string;
+  //@Input() public inSensor: Sensor;
 
 
   public devices: Device[] = [];

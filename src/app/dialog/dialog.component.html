@@ -1,11 +1,15 @@
-<h1 mat-dialog-title>Create a new Sensor - {{data.name}}</h1>
+<h1 mat-dialog-title>Create a new Sensor - id: {{data?.element?.id}}</h1>
 
 <div class="dialog-content" mat-dialog-content>
-  <app-select-device [inDisabled]="false" (outDeviceSelectedValue)="receivedMessageDevice($event)" ></app-select-device>
-  <app-select-datatype [inDisabled]="false" (outDataTypeSelected)="receivedMessageDataType($event)"></app-select-datatype>
+  <app-select-device [inDisabled]="false" [inValueSelectedInitial]="data?.element?.device.description" (outDeviceSelectedValue)="receivedMessageDevice($event)" ></app-select-device>
+  <app-select-datatype [inDisabled]="false" [inValueSelectedInitial]="data?.element?.dataType.description" (outDataTypeSelected)="receivedMessageDataType($event)"></app-select-datatype>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" (click)="onClicked()" cdkFocusInitial>Create a new sensor</button>
+  
+  <button mat-button (click)="onClicked()" cdkFocusInitial>{{(!data?.element?.length > 0 ) ? 'Save Edits' : 'Create new Sensor' }}</button>
+
 </div>
+
+<!-- {{data?.element | json}} -->

@@ -46,9 +46,6 @@ export class SensorComponent implements OnInit {
         console.log(error);
       }
     );
-
-
-   
   }
 
   applyFilter(filterValue: string) {
@@ -60,13 +57,23 @@ export class SensorComponent implements OnInit {
     
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '800px',
-      data: {name: 'Simba', animal: 'Leão'}
+      /* data: {id: 0} */
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    /* dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed ANIMAL: ' + result);
+    }); */
+  }
+
+  openEditSensorDialog(element): void {
+    console.log('Dialog Edit opened');
+    
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '800px',
+      data: {element: element}
     });
   }
+
 
   receivedMessage(e){
     /* console.log(e); */
