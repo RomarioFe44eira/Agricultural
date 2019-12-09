@@ -3,7 +3,7 @@ import { Device } from '../device/device.model';
 import { DataType } from '../datatype/datatype.model';
 
 export class Sensor {
-    device: Device;
-    dataType: DataType;
+    device?: Device;
+    dataType?: DataType;
 }
 

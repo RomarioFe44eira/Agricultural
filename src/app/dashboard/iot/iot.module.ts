@@ -9,6 +9,7 @@ import { SensorComponent } from './sensor/sensor.component';
 import { IotDefaultComponent } from './iot-default/iot-default.component';
 import { DashboardModule } from '../dashboard.module';
 import { Material } from 'src/app/material';
+import { ReusablesModule } from 'src/app/reusables/reusables.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { Material } from 'src/app/material';
     CommonModule,
     IotRoutingModule,
     DashboardModule,
-    Material
+    Material,
+    ReusablesModule
   ],
   exports: [DatatypeComponent, DeviceComponent, MeasurementComponent, SensorComponent, IotDefaultComponent]
 })

@@ -18,7 +18,7 @@ export class AccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  this.getPerson();
+    this.getPerson();
   }
 
   getPerson(){

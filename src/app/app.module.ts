@@ -20,7 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CooperativaModule } from './cooperativa/cooperativa.module';
 import { DialogComponent } from './dialog/dialog.component';
-
+import { ReusablesModule } from './reusables/reusables.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,7 @@ import { DialogComponent } from './dialog/dialog.component';
     MatButtonModule,
     LayoutModule,
     CooperativaModule,
+    ReusablesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -19,6 +19,9 @@ mat-card {
     margin: 1% auto;
 }
 
+.app-select-device{
+    width: 50%;
+}
 
 .addIcon{float: right;}
 table{width: 100%;}

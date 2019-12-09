@@ -1,0 +1,7 @@
+<mat-form-field class="full-width" [formGroup]="formDevice">
+    <mat-label>{{this.label}}</mat-label>
+    <mat-select formControlName="device" (selectionChange)="changeDevice()" [disabled]="inDisabled">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let d of devices" [value]="d.description" > {{ d.description }}</mat-option>
+    </mat-select>
+</mat-form-field>

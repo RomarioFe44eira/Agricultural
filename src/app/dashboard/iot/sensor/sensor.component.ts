@@ -18,6 +18,7 @@ export class SensorComponent implements OnInit {
   displayedColumns: string[] = ['id', 'device', 'datatype', 'action'];
   public dataSource = new MatTableDataSource<Sensor>([]);
 
+  public 
 
   constructor(
     public dialog: MatDialog,
@@ -29,21 +30,25 @@ export class SensorComponent implements OnInit {
     this.iotService.readAllDevice().subscribe(
       (device: Device[]) => {
         console.log(device);
+        if (device.length > 0) {
+          this.iotService.readAllSensorsOfDevice(device[0].id).subscribe(
+            (sensors: Sensor[]) => {
+              console.log(sensors);
+              this.dataSource.data = sensors;
+            }, 
+            error => {
+              console.log(error);
+            }
+          );
+        }
       },
       error => {
         console.log(error);
       }
     );
 
-    this.iotService.readAllSensorsOfDevice().subscribe(
-      (sensors: Sensor[]) => {
-        console.log(sensors);
-        this.dataSource.data = sensors;
-      }, 
-      error => {
-        console.log(error);
-      }
-    );
+
+   
   }
 
   applyFilter(filterValue: string) {
@@ -63,5 +68,18 @@ export class SensorComponent implements OnInit {
     });
   }
 
+  receivedMessage(e){
+    /* console.log(e); */
+ 
+    this.iotService.readAllSensorsOfDevice(e.id).subscribe(
+      (sensors: Sensor[]) => {
+        console.log(sensors);
+        this.dataSource.data = null;
+        this.dataSource.data = sensors;
+      }, 
+      error => {
+        console.log(error);
+    })
+  }
 
 }

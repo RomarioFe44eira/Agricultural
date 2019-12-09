@@ -76,14 +76,25 @@ export class IotService {
   }
 
   /////////// SENSOR //////////////////////////////////////////////////////////
-  readAllSensorsOfDevice = (): Observable<Sensor[]> => { // Buscar os sensores de um dispositivo
+  readAllSensorsOfDevice = (idSensor): Observable<Sensor[]> => { // Buscar os sensores de um dispositivo
     return this.http.get<Sensor[]>(
-      getDefaultURL('device/32/' + this.uriSensor),{ headers: this.authService.getHeadersAuthorization()}
+      getDefaultURL('device/'+ idSensor + '/'+ this.uriSensor),{ headers: this.authService.getHeadersAuthorization()}
     )
+  }
+  
+  insertSensor = (sensor:Sensor): Observable<Sensor> => {
+    try{
+      return this.http.post<Sensor>(
+        getDefaultURL('device/'+ this.uriSensor), JSON.stringify(sensor), { headers: this.authService.getHeadersAuthorization()}
+      )
+    }
+    catch(e){
+      this.snackbarService.openSnackBar('Problema ao inserir o sensor.');
+    }
+
   }
 /*
   readSensor = (sensor:Sensor): Observable<Sensor[]> => {}
-  insertSensor = (sensor:Sensor): Observable<Sensor[]> => {}
   updateSensor = (sensor:Sensor): Observable<string> => {}
   deleteSernsor = (sensor:Sensor): Observable<string> => {} */
   

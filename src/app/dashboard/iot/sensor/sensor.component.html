@@ -1,96 +1,64 @@
 <mat-drawer-container class="container">
-        <!-- <mat-drawer #drawer mode="side" opened (mouseleave)="drawer.toggle()" (blur)="drawer.toggle()"> -->
-        <mat-drawer #drawer mode="side" opened><app-mat-drawer></app-mat-drawer></mat-drawer>
-    
-        <mat-drawer-content>
-            <app-toolbar-dashboard></app-toolbar-dashboard>
+    <!-- <mat-drawer #drawer mode="side" opened (mouseleave)="drawer.toggle()" (blur)="drawer.toggle()"> -->
+    <mat-drawer #drawer mode="side" opened>
+        <app-mat-drawer></app-mat-drawer>
+    </mat-drawer>
 
-           <!--  <mat-card>
-                    <mat-card-title>[Create] OR [Edit] new Sensor</mat-card-title>
-                    <mat-card-subtitle>Um sensor está associado a um dispositivo IoT..</mat-card-subtitle>
-    
-                    <mat-card-content>
+    <mat-drawer-content>
+        <app-toolbar-dashboard></app-toolbar-dashboard>
 
-                        <p>
-                            <mat-form-field  class="full-width">
-                                <mat-label>Select your Device</mat-label>
-                                <mat-select>
-                                    <mat-option>Device 1</mat-option>
-                                    <mat-option>Device 2</mat-option>
-                                    <mat-option>Device 3</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </p>
+        <mat-card>
+            <mat-card-title>Sensor
+                <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new Sensor"
+                    (click)="openDialog()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </mat-card-title>
+            <mat-card-subtitle>Sensores estão associados a dispositivos IoT.</mat-card-subtitle>
+            <mat-card-content>
+              
+                <app-select-device [inDisabled]="false" (outDeviceSelectedValue)="receivedMessage($event)" ></app-select-device>
 
-                        <p>
-                            <mat-form-field class="full-width" appearance="fill">
-                                <mat-label>Include data type for device</mat-label>
-                                <input matInput placeholder="Include data type for Sensor">
-                            </mat-form-field>
-                        </p>
-                    </mat-card-content>
-    
-                    <mat-card-actions>
-                        <button mat-button>Create new Sensor</button>
-                    </mat-card-actions>
-    
-                </mat-card> -->
+                <!-- <mat-form-field class="addIcon">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar resultados">
+                </mat-form-field> -->
 
-            <mat-card>
-                <mat-card-title>Sensor
-                    <button mat-mini-fab color="primary" class="addIcon" matTooltip="Include new Sensor" (click)="openDialog()">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </mat-card-title>
-                <mat-card-subtitle>Sensores estão associados a dispositivos IoT.</mat-card-subtitle>
-                <mat-card-content>
-                    <mat-form-field class="addIcon">
-                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar resultados">
-                    </mat-form-field>
-                    
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                        <ng-container matColumnDef="id">
-                            <th mat-header-cell *matHeaderCellDef> No. </th>
-                            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-                        </ng-container>
-                    
-                        <ng-container matColumnDef="device">
-                            <th mat-header-cell *matHeaderCellDef> Device </th>
-                            <td mat-cell *matCellDef="let element"> {{element.device.description}} - {{element.device.id}} </td>
-                        </ng-container>
-                    
-                    
-                        <ng-container matColumnDef="datatype">
-                            <th mat-header-cell *matHeaderCellDef> DataType </th>
-                            <td mat-cell *matCellDef="let element"> {{element.dataType.description}}-{{element.dataType.id}} </td>
-                        </ng-container>
-                    
-                        <ng-container matColumnDef="action">
-                            <th mat-header-cell *matHeaderCellDef></th>
-                            <td mat-cell *matCellDef="let element"> 
-                                <div class="example-button-row">
-                                    <button mat-button class="addIcon" matTooltip="Delete Sensor"><mat-icon>delete</mat-icon></button>
-                                    <button mat-button class="addIcon" matTooltip="Edit Sensor"><mat-icon>edit</mat-icon></button>
-                                    <button mat-button class="addIcon" matTooltip="Details Sensor"><mat-icon>view_list</mat-icon></button>
-                                </div>
-                            </td>
-                        </ng-container>
-                    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    </table>
-                </mat-card-content>
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    </ng-container>
 
-              <!--   <mat-card-actions>
-                    <div class="example-button-row">
-                        <button mat-raised-button color="primary">Primary</button>
-                        <button mat-raised-button color="accent">Accent</button>
-                        <button mat-raised-button color="warn">Warn</button>
-                    </div>
-                </mat-card-actions> -->
+                    <ng-container matColumnDef="device">
+                        <th mat-header-cell *matHeaderCellDef> Device </th>
+                        <td mat-cell *matCellDef="let element">id: {{element.device.id}} - Name:
+                            {{element.device.description}} </td>
+                    </ng-container>
 
-            </mat-card>
-        </mat-drawer-content>
-   
-    </mat-drawer-container>
-    
+                    <ng-container matColumnDef="datatype">
+                        <th mat-header-cell *matHeaderCellDef> DataType </th>
+                        <td mat-cell *matCellDef="let element">id: {{element.dataType.id}} - Name:
+                            {{element.dataType.description}}- </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element">
+                            <div class="example-button-row">
+                                <button mat-button class="addIcon" matTooltip="Delete Sensor">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button mat-button class="addIcon" matTooltip="Edit Sensor">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </mat-drawer-content>
+</mat-drawer-container>
