@@ -55,16 +55,25 @@ export class SensorComponent implements OnInit {
   }
 
   openDialog(): void {
-    console.log('click');
-    
+
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '800px',
-      /* data: {id: 0} */
     });
 
-    /* dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ANIMAL: ' + result);
-    }); */
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+
+    /*   this.iotService.readAllSensorsOfDevice(result.id).subscribe(
+        (sensors: Sensor[]) => {
+          console.log(sensors);
+          this.dataSource.data = sensors;
+        }, 
+        error => {
+          console.log(error);
+        }
+      ); */
+
+    });
   }
 
   openEditSensorDialog(element): void {

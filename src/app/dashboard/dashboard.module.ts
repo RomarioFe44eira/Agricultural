@@ -8,6 +8,7 @@ import { DefaultComponent } from './default/default.component';
 import { AccountComponent } from './account/account.component';
 import { ToolbarDashboardComponent } from './toolbar-dashboard/toolbar-dashboard.component';
 import { MatDrawerComponent } from './mat-drawer/mat-drawer.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatDrawerComponent } from './mat-drawer/mat-drawer.component';
     CommonModule,
     DashboardRoutingModule,
     ReusablesModule,
-    Material
+    Material,
+    FormsModule
   ],
   exports: [DefaultComponent, AccountComponent, ToolbarDashboardComponent, MatDrawerComponent]
 })

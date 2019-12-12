@@ -7,7 +7,7 @@
 </div>
 
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button *ngIf="!data?.element?.id" (click)="onClicked()" cdkFocusInitial>Create new Sensor</button>
-  <button mat-button *ngIf="data?.element?.id" (click)="onSaveEdits(data?.element)" cdkFocusInitial>Save Edits</button>
+  <button mat-button  (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="this.device" *ngIf="!data?.element?.id" (click)="onClicked()" cdkFocusInitial>Create new Sensor</button>
+  <button mat-button  *ngIf="data?.element?.id" (click)="onSaveEdits(data?.element)" cdkFocusInitial>Save Edits</button>
 </div>
