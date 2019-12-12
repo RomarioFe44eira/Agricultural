@@ -40,6 +40,7 @@ export class IotService {
   }
 
   public insertDataType = (dType: DataType): Observable<DataType> => {
+    console.log(JSON.stringify(dType));
     try{
       
       return this.http.post<DataType>(
@@ -93,10 +94,24 @@ export class IotService {
     }
 
   }
-/*
+
+  
+  public deleteSensor = (sensor: Sensor): Observable<string> => {
+    return this.http.delete<string>(
+      getDefaultURL('device/sensor/' + sensor.id), {headers: this.authService.getHeadersAuthorization()}
+    )
+  }
+
+  public updateSensor = (sensor: Sensor): Observable<string> => {
+    return this.http.put<string>(
+      getDefaultURL('device/sensor/'), JSON.stringify(sensor),{headers: this.authService.getHeadersAuthorization()}
+    )
+  }
+
+  /*
   readSensor = (sensor:Sensor): Observable<Sensor[]> => {}
   updateSensor = (sensor:Sensor): Observable<string> => {}
-  deleteSernsor = (sensor:Sensor): Observable<string> => {} */
+   */
   
 
 }

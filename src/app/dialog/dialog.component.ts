@@ -10,8 +10,9 @@ import { IotService } from '../dashboard/iot/iot.service';
 import { Sensor } from '../dashboard/iot/sensor/sensor.model';
 
 export interface DialogData {
-  animal: string;
   name: string;
+  dataType: DataType,
+  device:Device
 }
 
 @Component({
@@ -23,6 +24,8 @@ export class DialogComponent implements OnInit {
  
   public device: Device = null;
   public datatype: DataType = null;
+
+  public sensor: Sensor = new Sensor();
  
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -58,7 +61,7 @@ export class DialogComponent implements OnInit {
         },
         error => {
           console.log(error);
-          this.snackbarService.openSnackBar('Não foi possível cadastrar o sensor!');
+          this.snackbarService.openSnackBar("Sensor não cadastrado, \n Erro: " + error.error.category);
         }
       );
 
@@ -71,6 +74,36 @@ export class DialogComponent implements OnInit {
     }
 
   }
+
+  onSaveEdits(element){
+    if (!isNullOrUndefined(this.device) && !isNullOrUndefined(this.datatype)) {
+      
+      this.sensor.id = element.id;
+      this.sensor.dataType = this.datatype;
+      this.sensor.device = this.device;
+
+      
+      console.log(this.sensor);
+
+      this.sensorService.updateSensor(this.sensor).subscribe(
+        data => {
+          this.snackbarService.openSnackBar('Sensor atualizado com sucesso!');
+          console.log(data);
+        },
+        error => {
+          this.snackbarService.openSnackBar('Não foi possível atualizar o sensor');
+          console.log(error);
+        }
+      );
+    
+    }
+    else{
+      this.snackbarService.openSnackBar('Impossível de atualizar, pois não foram selecionados todos os campos!');
+    }
+
+  }
+
+
 
   receivedMessageDevice(e){
     this.device = e;

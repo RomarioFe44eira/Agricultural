@@ -1,6 +1,6 @@
 <mat-form-field class="full-width" [formGroup]="formDataType">
-    <mat-label>{{this.label}}</mat-label>
-    <mat-select formControlName="datatype" (selectionChange)="changeDataType()" [disabled]="inDisabled">
+    <mat-label>{{this.inLabel}}</mat-label>
+    <mat-select formControlName="datatype" (selectionChange)="changeDataType()" [disabled]="inDisabled" >
         <mat-option *ngFor="let dType of dataTypes" [value]="dType.description" > {{ dType.description }}</mat-option>
     </mat-select>
 </mat-form-field>

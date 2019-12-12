@@ -6,6 +6,7 @@ import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { IotService } from '../iot.service';
 import { Sensor } from './sensor.model';
 import { Device } from '../device/device.model';
+import { SnackbarService } from 'src/app/reusables/snackbar.service';
 
 @Component({
   selector: 'app-sensor',
@@ -22,7 +23,8 @@ export class SensorComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public iotService: IotService
+    public iotService: IotService,
+    private snackbarService: SnackbarService
   ) { }
 
   ngOnInit() {
@@ -67,17 +69,32 @@ export class SensorComponent implements OnInit {
 
   openEditSensorDialog(element): void {
     console.log('Dialog Edit opened');
-    
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '800px',
       data: {element: element}
     });
   }
 
+  deleteSensor(sensor){
+    this.iotService.deleteSensor(sensor).subscribe(
+      (data)=> {
+        this.dataSource.data.forEach(element => {
+          if (sensor.id == element.id) {
+            this.dataSource.data.splice(this.dataSource.data.indexOf(element), 1);
+            this.snackbarService.openSnackBar('Sensor removido com sucesso!');
+            this.dataSource.data = this.dataSource.data;
+          }
+        });
+      },
+      error => {
+        console.log(error.message);
+        this.snackbarService.openSnackBar('Erro: '+ error.message);
+      }
+    );
+
+  }
 
   receivedMessage(e){
-    /* console.log(e); */
- 
     this.iotService.readAllSensorsOfDevice(e.id).subscribe(
       (sensors: Sensor[]) => {
         console.log(sensors);
