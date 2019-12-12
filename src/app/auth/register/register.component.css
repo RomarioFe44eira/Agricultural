@@ -10,3 +10,42 @@ mat-card{
   margin-right: 8px;
   text-align: center;
 }
+
+
+mat-horizontal-stepper{
+  width: 100%;
+  margin: 5% auto;
+}
+
+p{
+  width: 100%;
+  /* background-color: salmon; */
+}
+
+mat-form-field{
+  width: 80%;
+  margin: 0 auto;
+  padding-left: 10% ;
+}
+
+form{
+  margin: 0 auto;
+}
+
+full-width{
+  width: 100%;
+}
+
+
+.btn{
+  margin: 0 auto;
+  margin-left: 10%;
+}
+
+mat-spinner{
+  margin: 0 auto;
+}
+
+.centerButtons{
+  text-align: center;
+}

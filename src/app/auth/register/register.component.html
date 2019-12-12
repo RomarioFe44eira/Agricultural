@@ -1,126 +1,110 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-
-
-  <mat-card>
-      <mat-card-title>Register user</mat-card-title>
-      <mat-card-subtitle>Use the form below to register a new user</mat-card-subtitle>
-
-      <mat-card-content>
-        <mat-vertical-stepper [linear]="isLinear" #stepper>
-            <mat-step [stepControl]="firstFormGroup">
-              <form [formGroup]="firstFormGroup">
-                <ng-template matStepLabel>Fill out your name</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperNext>Next</button>
+<mat-card>
+  <mat-card-title>Registration form</mat-card-title>
+  <mat-card-subtitle>fill out the form with the requested information.</mat-card-subtitle>
+    <mat-card-content>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="dadosPessoais">
+              <form [formGroup]="dadosPessoais">
+                <ng-template matStepLabel>Personal Data</ng-template>
+       
+               <p>
+                    <mat-form-field>
+                        <mat-label>Full Name</mat-label>
+                        <input matInput placeholder="Enter your full name" formControlName="name" required>
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                </p>
+       
+                <p>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="Choose date of birth" formControlName="birth" dateFormat="dd-MM-yyyy">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                    </mat-form-field>
+                </p>
+    
+                <p>
+                  <mat-form-field>
+                      <mat-label>Select your country</mat-label>
+                      <mat-select formControlName="country">
+                          <mat-option *ngFor="let pais of country" (change)="updateFormGroupContato()"  [value]="pais.id">{{ pais.nameEn }}</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+               </p>
+               
+               <div class="btn">
+                  <button mat-button matStepperNext (click)="updateFormGroupContato()">Next</button>
                 </div>
               </form>
             </mat-step>
-
-
-            <mat-step [stepControl]="secondFormGroup">
-              <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="secondCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-
-
-            <mat-step [stepControl]="thirdFormGroup">
-              <form [formGroup]="thirdFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="thirdCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-           
-
-            <mat-step [stepControl]="fourthFormGroup">
-              <form [formGroup]="fourthFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="fourthCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-           
-           
-            <mat-step [stepControl]="fivethFormGroup">
-              <form [formGroup]="fivethFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="fivethCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-
-
-            
-            <mat-step [stepControl]="sixthFormGroup">
-              <form [formGroup]="sixthFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="sixthCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
+    
+            <!--Dados Contato -->
+            <mat-step [stepControl]="contato">
+              <form [formGroup]="contato">
+                <ng-template matStepLabel>contact</ng-template>
+    
+                <p>
+                    <mat-form-field>
+                        <mat-label>Inform your email</mat-label>
+                        <input matInput placeholder="Email" formControlName="mail" type="email" required>
+                        <mat-icon matSuffix>mail</mat-icon>
+                        <!-- <mat-hint>Hint</mat-hint> -->
+                    </mat-form-field>
+                </p>
+    
+                <p>
+                    <mat-form-field>
+                        <mat-label>Code idd</mat-label>
+                        <mat-select formControlName="phoneCode">
+                            <mat-option *ngFor="let pais of country" [value]="pais.phoneCode"> {{pais.phoneCode}} - {{ pais.nameEn }}</mat-option>
+                        </mat-select>
+                        <mat-hint>idd - international direct dial</mat-hint>
+                    </mat-form-field>
+                 </p>
+    
+                <p>
+                    <mat-form-field>
+                        <mat-label>Contact number</mat-label>
+                        <input matInput placeholder="Phone or mobile number" formControlName="phone" type="tel" required>
+                        <mat-icon matSuffix>smartphone</mat-icon>
+                        <mat-hint>expected format: DDDXXXXXXXX </mat-hint>
+                    </mat-form-field>
+                </p>
+    
+                <div class="btn">
+                  <button mat-button matStepperPrevious>Back</button> &nbsp;
                   <button mat-button matStepperNext>Next</button>
                 </div>
               </form>
             </mat-step>
           
-          
-            <mat-step [stepControl]="seventhFormGroup">
-              <form [formGroup]="seventhFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="seventhCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
+            <mat-step [stepControl]="auth">
+              <form [formGroup]="auth">
+                <ng-template matStepLabel>Authentication</ng-template>
+                  <p>
+                    <mat-form-field appearance="fill">
+                      <mat-label>choose a password</mat-label>
+                      <input matInput placeholder="Choose a password" formControlName="senha" type="password"
+                        (keyup)="checkPasswords(auth)" required minlength="8">
+                      <mat-icon matSuffix>password</mat-icon>
+                      <!-- <mat-hint *ngIf="auth.hasError('passLength')">Deve possuir ao menos 8 caracteres.</mat-hint> -->
+                      <mat-hint *ngIf="auth.value.senha.length < 8 ">Must be at least 8 characters</mat-hint>
+                    </mat-form-field>
+                  </p>
+                  <p>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Confirm the password</mat-label>
+                      <input matInput placeholder="Confirm the Password" formControlName="cosenha" type="password" required minlength="8">
+                      <mat-icon matSuffix>smartphone</mat-icon>
+                      <mat-hint *ngIf="auth.hasError('notSame')">Passwords do not match!</mat-hint>
+                    </mat-form-field>
+                  </p>
               </form>
             </mat-step>
-
-
-            <mat-step>
-              <ng-template matStepLabel>Done</ng-template>
-              You are now done.
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-              </div>
-            </mat-step>
-          </mat-vertical-stepper>
-      </mat-card-content>
-      <mat-card-actions class="button-row">
-        <button mat-button>I already have an account</button>
-      </mat-card-actions>
-
-  </mat-card>
-
-  
+          </mat-horizontal-stepper>
+    </mat-card-content>
+   
+    <mat-card-actions class="centerButtons"  >
+        <button mat-raised-button [disabled]="auth.status == 'VALID'? false : true" color="primary" (click)="sendForm()">Signup</button>
+    </mat-card-actions>
+</mat-card>

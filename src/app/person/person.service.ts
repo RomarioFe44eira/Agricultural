@@ -5,6 +5,7 @@ import { getDefaultURL } from '../app.const';
 import { SnackbarService } from '../reusables/snackbar.service';
 import { Person } from './person.model';
 import { AuthService } from '../auth/auth.service';
+import { Country } from '../auth/register/country.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,12 @@ export class PersonService {
     return this.http.post<string>( getDefaultURL('person'), body, {
       headers: this.getHeaders()
     })
+  }
+
+  public getPaises = (): Observable<Country[]> => {
+    return this.http.get<Country[]>(
+      getDefaultURL('country'), {headers: this.getHeaders()}
+    )
   }
 
   // Atualiza uma pessoa na API
