@@ -95,22 +95,25 @@ export class IotService {
       getDefaultURL('measurement'),{ headers: this.authService.getHeadersAuthorization()}
     )
   }
+
   public insertMeansurement = (meansurement: Measurement): Observable<Measurement> => {
     try{
       console.log(JSON.stringify(meansurement));
-      return this.http.post<DataType>(
-        getDefaultURL('meansurement'), JSON.stringify(meansurement),{ headers: this.authService.getHeadersAuthorization()}
+      return this.http.post<Measurement>(
+        getDefaultURL('measurement'), JSON.stringify(meansurement),{ headers: this.authService.getHeadersAuthorization()}
       )
     }
     catch(e){
       this.snackbarService.openSnackBar('Ocorreu um problema operacional na inserção do registro.');
     }
   }
+
   public deleteMeansurement = (meansurement: Measurement): Observable<string> => {
     return this.http.delete<string>(
-      getDefaultURL('meansurement/' + meansurement.id), {headers: this.authService.getHeadersAuthorization()}
+      getDefaultURL('measurement/' + meansurement.id), {headers: this.authService.getHeadersAuthorization()}
     )
   }
+  
   public updateMeansurement = (meansurement: Measurement): Observable<string> => {
     return this.http.put<string>(
       getDefaultURL(this.uri), JSON.stringify(meansurement),{headers: this.authService.getHeadersAuthorization()}

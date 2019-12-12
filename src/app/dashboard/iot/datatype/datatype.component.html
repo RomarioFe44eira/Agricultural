@@ -7,7 +7,7 @@
     <mat-drawer-content>
         <app-toolbar-dashboard></app-toolbar-dashboard>
 
-        <mat-card *ngIf="cardVisible == true">
+        <mat-card *ngIf="cardVisible">
             <mat-card-title>{{ (createOrEdit ? 'Create new' : 'Edit')}} Data Type</mat-card-title>
             <mat-card-subtitle>{{ (createOrEdit ? 'Criar' : 'Editar')}} uma representação do tipo de dado que serão coletados por sensores IoT.</mat-card-subtitle>
 

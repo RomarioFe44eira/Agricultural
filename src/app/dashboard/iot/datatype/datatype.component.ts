@@ -133,6 +133,7 @@ export class DatatypeComponent implements OnInit {
         error => {
           console.log(error);
           this.snackbarService.openSnackBar('Data type ' + dType.description + ' não atualizado!');
+          this.cardVisible = false;
         }
       );
     }

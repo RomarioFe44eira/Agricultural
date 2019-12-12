@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { IotService } from '../iot.service';
 import { Measurement } from './measurement.model';
+import { SnackbarService } from 'src/app/reusables/snackbar.service';
 
 @Component({
   selector: 'app-measurement',
@@ -15,7 +16,8 @@ export class MeasurementComponent implements OnInit {
   dataSource = new MatTableDataSource([]);
 
   constructor(
-    private mesurementService: IotService
+    private mesurementService: IotService,
+    private snackbarService: SnackbarService
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,7 @@ export class MeasurementComponent implements OnInit {
       },
       error => {
         console.log(error);
+        this.snackbarService.openSnackBar('Erro ao buscar os dados');
       }
     );
   }
